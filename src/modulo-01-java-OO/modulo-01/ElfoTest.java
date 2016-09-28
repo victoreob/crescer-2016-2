@@ -197,8 +197,82 @@ public class ElfoTest
         assertEquals(100, balin.getVida());
         assertEquals(100, gloin.getVida());
     }
-}
 
+    @Test
+    public void elfoToStringComInformacoesIniciais() {
+        Elfo legolas = new Elfo("Legolas");
+        assertEquals("Legolas possui 42 flechas e 0 nível de experiência.",
+            legolas.toString());
+
+    }
+
+    @Test
+    public void elfoAtiraFlechaEToString() {
+        Elfo legolas = new Elfo("Legolas");
+        legolas.atirarFlecha(new Dwarf());
+        assertEquals("Legolas possui 41 flechas e 1 nível de experiência.",
+            legolas.toString());
+
+    }
+
+    @Test
+    public void elfoAtiraDuasFlechasEToString() {
+        Elfo legolas = new Elfo("Legolas");
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        assertEquals("Legolas possui 40 flechas e 2 níveis de experiência.",
+            legolas.toString());
+
+    }
+    
+    @Test
+    public void elfoAtira41FlechasEToString() {
+        Elfo legolas = new Elfo("Legolas");
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        legolas.atirarFlecha(new Dwarf());
+        assertEquals("Legolas possui 1 flecha e 41 níveis de experiência.",
+            legolas.toString());
+    }
+}
 
 
 
