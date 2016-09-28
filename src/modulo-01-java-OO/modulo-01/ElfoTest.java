@@ -166,8 +166,8 @@ public class ElfoTest
         legolas.atirarFlecha();
         legolas.atirarFlecha();
         // Assert
-        assertEquals(-1, legolas.getFlecha().getQuantidade());
-        assertEquals(43, legolas.getExperiencia());
+        assertEquals(0, legolas.getFlecha().getQuantidade());
+        assertEquals(42, legolas.getExperiencia());
     }
 }
 
