@@ -31,7 +31,7 @@ public class Dwarf {
     public int getVida() {
         return vida;
     }
-    
+
     public int getExperiencia() {
         return experiencia;
     }
@@ -50,7 +50,7 @@ public class Dwarf {
         if (dataNascimento.ehBissexto() && this.vida >= 80 && this.vida <= 90) {
             resultado *= -33.0;
         }
-
+        //if (!dataNascimento.ehBissexto() && this.nome != null && (this.nome.equals("Seixas") || this.nome.equals("Meireles"))) {
         if (!dataNascimento.ehBissexto() && ("Seixas".equals(this.nome) || "Meireles".equals(this.nome))) {
             resultado = resultado * 33 % 100;
         }
