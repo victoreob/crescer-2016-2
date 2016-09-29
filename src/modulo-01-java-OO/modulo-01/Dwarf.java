@@ -2,11 +2,13 @@ public class Dwarf {
     private int vida, experiencia;
     private DataTerceiraEra dataNascimento;
     private String nome;
+    private Status status; //= Status.VIVO;
 
     // java type initializer
     // vai ser replicado para cada construtor
     {
         vida = 110;
+        //status = Status.VIVO;
     }
 
     public Dwarf() {
@@ -16,6 +18,7 @@ public class Dwarf {
     public Dwarf(String nome, DataTerceiraEra dataNascimento) {
         this.nome = nome;
         this.dataNascimento = dataNascimento;
+        this.status = Status.VIVO;
     }
 
     public void perderVida() {
@@ -24,7 +27,13 @@ public class Dwarf {
             this.experiencia += 2;
         }
         if (numero > 100) {
-            vida -= 10;
+            int vidaAposFlechada = this.vida - 10;
+            if (vidaAposFlechada == 0) {
+                status = Status.MORTO;
+            }
+            if (vida > 0) {
+                vida = vidaAposFlechada;
+            }
         }
     }
 
@@ -38,6 +47,10 @@ public class Dwarf {
 
     public String getNome() {
         return this.nome;
+    }
+
+    public Status getStatus() {
+        return status;
     }
 
     public DataTerceiraEra getDataNascimento() {
