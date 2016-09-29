@@ -22,7 +22,7 @@ public class Dwarf {
         double numero = this.getNumeroSorte();
         if (numero < 0) {
             this.experiencia += 2;
-        } 
+        }
         if (numero > 100) {
             vida -= 10;
         }
@@ -46,12 +46,13 @@ public class Dwarf {
 
     public double getNumeroSorte() {
         double resultado = 101.;
+        boolean ehBissexto = dataNascimento.ehBissexto();
 
-        if (dataNascimento.ehBissexto() && this.vida >= 80 && this.vida <= 90) {
+        if (ehBissexto && this.vida >= 80 && this.vida <= 90) {
             resultado *= -33.0;
         }
         //if (!dataNascimento.ehBissexto() && this.nome != null && (this.nome.equals("Seixas") || this.nome.equals("Meireles"))) {
-        if (!dataNascimento.ehBissexto() && ("Seixas".equals(this.nome) || "Meireles".equals(this.nome))) {
+        if (!ehBissexto && ("Seixas".equals(this.nome) || "Meireles".equals(this.nome))) {
             resultado = resultado * 33 % 100;
         }
 
