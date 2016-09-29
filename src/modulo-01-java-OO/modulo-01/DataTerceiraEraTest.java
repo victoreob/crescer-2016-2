@@ -16,13 +16,18 @@ public class DataTerceiraEraTest
     }
     
     @Test
-    public void criarAno1600QueEhBissexto() {
+    public void criarAno2000QueEhBissexto() {
         // Arrange
         DataTerceiraEra data = new DataTerceiraEra(1, 1, 2000);
         // Act
         boolean obtido = data.ehBissexto();
         // Assert
         assertTrue(obtido);
+    }
+    
+    @Test
+    public void criarAno1900NaoEhBissexto() {
+        assertFalse(new DataTerceiraEra(1,1,1900).ehBissexto());
     }
     
     @Test
