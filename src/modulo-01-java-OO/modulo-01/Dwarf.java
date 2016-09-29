@@ -1,5 +1,5 @@
 public class Dwarf {
-    private int vida;
+    private int vida, experiencia;
     private DataTerceiraEra dataNascimento;
     private String nome;
 
@@ -19,11 +19,21 @@ public class Dwarf {
     }
 
     public void perderVida() {
-        vida -= 10;
+        double numero = this.getNumeroSorte();
+        if (numero < 0) {
+            this.experiencia += 2;
+        } 
+        if (numero > 100) {
+            vida -= 10;
+        }
     }
 
     public int getVida() {
         return vida;
+    }
+    
+    public int getExperiencia() {
+        return experiencia;
     }
 
     public String getNome() {
