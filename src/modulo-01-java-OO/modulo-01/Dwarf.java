@@ -22,6 +22,12 @@ public class Dwarf {
     }
 
     public void perderVida() {
+        boolean estaMorto = status.equals(Status.MORTO);
+        // sai do método
+        if (estaMorto) {
+            return;
+        }
+
         double numero = this.getNumeroSorte();
         if (numero < 0) {
             this.experiencia += 2;
