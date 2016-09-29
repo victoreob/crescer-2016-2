@@ -25,13 +25,27 @@ public class Dwarf {
     public int getVida() {
         return vida;
     }
-    
+
     public String getNome() {
         return this.nome;
     }
-    
+
     public DataTerceiraEra getDataNascimento() {
         return this.dataNascimento;
+    }
+
+    public double getNumeroSorte() {
+        double resultado = 101.;
+
+        if (dataNascimento.ehBissexto() && this.vida >= 80 && this.vida <= 90) {
+            resultado *= -33.0;
+        }
+
+        if (!dataNascimento.ehBissexto() && ("Seixas".equals(this.nome) || "Meireles".equals(this.nome))) {
+            resultado = resultado * 33 % 100;
+        }
+
+        return resultado;
     }
 }
 // Dwarf gimli;

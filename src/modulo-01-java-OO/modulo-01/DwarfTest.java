@@ -60,7 +60,7 @@ public class DwarfTest
         assertEquals(11, gimli.getDataNascimento().getMes());
         assertEquals(1900, gimli.getDataNascimento().getAno());
     }
-    
+
     @Test
     public void dwarfCriadoSemInformarNomeENascimento() {
         Dwarf gimli = new Dwarf();
@@ -68,6 +68,49 @@ public class DwarfTest
         assertEquals(1, gimli.getDataNascimento().getDia());
         assertEquals(1, gimli.getDataNascimento().getMes());
         assertEquals(1, gimli.getDataNascimento().getAno());
+    }
+
+    @Test
+    public void gerarNumeroAnoBissextoVidaEntre80e90() {
+        // Arrange
+        Dwarf bernardin = new Dwarf("Bernardin", new DataTerceiraEra(01, 01, 2016));
+        bernardin.perderVida();
+        bernardin.perderVida();
+        bernardin.perderVida();
+        // Act
+        double resultado = bernardin.getNumeroSorte();
+        // Assert
+        assertEquals(-3333.0, resultado, .0);
+    }
+
+    @Test
+    public void gerarNumeroAnoNaoBissextoNomeSeixas() {
+        // Arrange
+        Dwarf seixas = new Dwarf("Seixas", new DataTerceiraEra(01, 01, 2015));
+        // Act
+        double resultado = seixas.getNumeroSorte();
+        // Assert
+        assertEquals(33.0, resultado, .0);
+    }
+
+    @Test
+    public void gerarNumeroAnoNaoBissextoNomeMeireles() {
+        // Arrange
+        Dwarf seixas = new Dwarf("Meireles", new DataTerceiraEra(01, 01, 2015));
+        // Act
+        double resultado = seixas.getNumeroSorte();
+        // Assert
+        assertEquals(33.0, resultado, .0);
+    }
+
+    @Test
+    public void gerarNumeroSemEntrarNasCondicoes() {
+        // Arrange
+        Dwarf balin = new Dwarf("Balin", new DataTerceiraEra(1, 1, 2015));
+        // Act
+        double resultado = balin.getNumeroSorte();
+        // Assert
+        assertEquals(101.0, resultado, .0);
     }
 }
 
