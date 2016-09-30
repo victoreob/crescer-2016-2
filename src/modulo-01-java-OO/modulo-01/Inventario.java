@@ -21,7 +21,7 @@ public class Inventario {
 
     public String getDescricoesItens() {
         //"Adaga,Escudo,Bracelete"
-        String resultado = "";
+        StringBuilder resultado = new StringBuilder("");
 
         /*for (int i = 0; i < itens.size(); i++) {
         Item itemAtual = itens.get(i);
@@ -43,10 +43,10 @@ public class Inventario {
         } while (i < itens.size());*/
 
         for (Item itemAtual : itens) {
-            resultado += String.format("%s,", itemAtual.getDescricao());
+            resultado.append(String.format("%s,", itemAtual.getDescricao()));
         }
 
-        return resultado.isEmpty() ? resultado : resultado.substring(0, resultado.length() - 1);
+        return resultado.length() == 0 ? resultado.toString() : resultado.substring(0, resultado.length() - 1);
     }
     
     public void aumentarUnidadesDosItens(int unidades) {
