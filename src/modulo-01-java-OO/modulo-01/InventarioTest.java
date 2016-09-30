@@ -73,5 +73,27 @@ public class InventarioTest {
         inventario.removerItem(espadaZ);
         assertFalse(inventario.getItens().contains(espadaZ));
     }
+    
+    @Test
+    public void getDescricoesItensComVariosItens() {
+        Inventario inventario = new Inventario();
+        inventario.adicionarItem(new Item("Adaga", 14));
+        inventario.adicionarItem(new Item("Escudo", 2));
+        inventario.adicionarItem(new Item("Bracelete", 56));
+        assertEquals("Adaga,Escudo,Bracelete", inventario.getDescricoesItens());
+    }
+    
+    @Test
+    public void getDescricoesItensComApenasUmItem() {
+        Inventario inventario = new Inventario();
+        inventario.adicionarItem(new Item("Bracelete", 56));
+        assertEquals("Bracelete", inventario.getDescricoesItens());
+    }
+    
+    @Test
+    public void getDescricoesItensSemItens() {
+        Inventario inventario = new Inventario();
+        assertEquals("", inventario.getDescricoesItens());
+    }
 }
 
