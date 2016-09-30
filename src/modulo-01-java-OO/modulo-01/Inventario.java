@@ -48,5 +48,11 @@ public class Inventario {
 
         return resultado.isEmpty() ? resultado : resultado.substring(0, resultado.length() - 1);
     }
+    
+    public void aumentarUnidadesDosItens(int unidades) {
+        for (Item item : itens) {
+            item.aumentarUnidades(unidades);
+        }
+    }
 }
 
