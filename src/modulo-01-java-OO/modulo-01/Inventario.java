@@ -54,5 +54,24 @@ public class Inventario {
             item.aumentarUnidades(unidades);
         }
     }
+    
+    public Item getItemComMaiorQuantidade() {
+        // maiorAteAgora = 0
+        // percorro todos os itens verificando se existe alguém maior que o até agora
+        // caso existir, atualiza a variável
+        // retorna no final
+        int indice = 0, maiorQtdAteAgora = 0;
+        
+        for (int i = 0; i < itens.size(); i++) {
+            int qtdAtual = itens.get(i).getQuantidade();
+            if (qtdAtual > maiorQtdAteAgora) {
+                maiorQtdAteAgora = qtdAtual;
+                indice = i;
+            }
+        }
+        
+        boolean temItens = !itens.isEmpty();
+        return temItens ? itens.get(indice) : null;
+    }
 }
 
