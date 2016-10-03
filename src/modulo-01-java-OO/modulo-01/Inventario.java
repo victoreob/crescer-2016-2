@@ -55,6 +55,12 @@ public class Inventario {
         }
     }
     
+    public void aumentarUnidadesProporcionalQuantidadePorItem() {
+        for (Item item : this.itens) {
+            item.aumentarProporcionalQuantidade();
+        }
+    }
+    
     public Item getItemComMaiorQuantidade() {
         // maiorAteAgora = 0
         // percorro todos os itens verificando se existe alguém maior que o até agora

@@ -22,6 +22,17 @@ public class Item {
     public String getDescricao() {
         return descricao;
     }
+    
+    public void aumentarProporcionalQuantidade() {
+        /*int resultado = 0;
+        for (int i = 1; i <= this.quantidade; i++) {
+        resultado += i;
+        }*/
+        // Usando PA:
+        int quantidadeAbsoluta = Math.abs(this.quantidade);
+        int resultado = quantidadeAbsoluta * (quantidadeAbsoluta + 1) / 2;
+        this.quantidade += (resultado * 1000);
+    }
 }
 
 
