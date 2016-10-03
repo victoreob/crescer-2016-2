@@ -226,6 +226,60 @@ public class InventarioTest {
         assertEquals(3002, inventario.getItens().get(0).getQuantidade());
         assertEquals(6003, inventario.getItens().get(1).getQuantidade());
     }
+    
+    @Test
+    public void ordenarItensDescendenteComItensOrdenadosAscendente() {
+        // Arrange
+        Inventario mochila = new Inventario();
+        Item elderScroll = new Item("Elder Scroll", 1);
+        Item escudo = new Item("Escudo", 2);
+        Item canivete = new Item("Canivete suíço", 3);
+        mochila.adicionarItem(elderScroll);
+        mochila.adicionarItem(escudo);
+        mochila.adicionarItem(canivete);
+        // Act
+        mochila.ordenarItens(TipoOrdenacao.DESCENDENTE);
+        // Assert
+        assertEquals(canivete, mochila.getItens().get(0));
+        assertEquals(escudo, mochila.getItens().get(1));
+        assertEquals(elderScroll, mochila.getItens().get(2));
+    }
+    
+    @Test
+    public void ordenarItensDescendenteComItensMesmaQuantidade() {
+        // Arrange
+        Inventario mochila = new Inventario();
+        Item elderScroll = new Item("Elder Scroll", 1);
+        Item escudo = new Item("Escudo", 1);
+        Item canivete = new Item("Canivete suíço", 1);
+        mochila.adicionarItem(elderScroll);
+        mochila.adicionarItem(escudo);
+        mochila.adicionarItem(canivete);
+        // Act
+        mochila.ordenarItens(TipoOrdenacao.DESCENDENTE);
+        // Assert
+        assertEquals(elderScroll, mochila.getItens().get(0));
+        assertEquals(escudo, mochila.getItens().get(1));
+        assertEquals(canivete, mochila.getItens().get(2));
+    }
+    
+    @Test
+    public void ordenarItensDescendenteJaOrdenado() {
+        // Arrange
+        Inventario mochila = new Inventario();
+        Item elderScroll = new Item("Elder Scroll", 3);
+        Item escudo = new Item("Escudo", 2);
+        Item canivete = new Item("Canivete suíço", 1);
+        mochila.adicionarItem(elderScroll);
+        mochila.adicionarItem(escudo);
+        mochila.adicionarItem(canivete);
+        // Act
+        mochila.ordenarItens(TipoOrdenacao.DESCENDENTE);
+        // Assert
+        assertEquals(elderScroll, mochila.getItens().get(0));
+        assertEquals(escudo, mochila.getItens().get(1));
+        assertEquals(canivete, mochila.getItens().get(2));
+    }
 
     private Inventario criarInventarioCom3Itens() {
         Inventario inventario = new Inventario();
