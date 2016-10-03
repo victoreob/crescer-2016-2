@@ -155,6 +155,52 @@ public class InventarioTest {
         Item item = inventario.getItemComMaiorQuantidade();
         assertNull(item);
     }
+    
+    @Test
+    public void ordenarItensBaguncados() {
+        // Arrange
+        Inventario mochila = new Inventario();
+        Item armadura = new Item("Armadura", 9);
+        Item escudo = new Item("Escudo", 99);
+        Item canivete = new Item("Canivete suíço", 2);
+        mochila.adicionarItem(armadura);
+        mochila.adicionarItem(escudo);
+        mochila.adicionarItem(canivete);
+        // Act
+        mochila.ordenarItens();
+        // Assert
+        assertEquals(canivete, mochila.getItens().get(0));
+        assertEquals(armadura, mochila.getItens().get(1));
+        assertEquals(escudo, mochila.getItens().get(2));
+    }
+    
+    @Test
+    public void ordenarItensComMesmaQuantidade() {
+        // Arrange
+        Inventario mochila = new Inventario();
+        Item elderScroll = new Item("Elder Scroll", 9);
+        Item escudo = new Item("Escudo", 9);
+        Item canivete = new Item("Canivete suíço", 9);
+        mochila.adicionarItem(elderScroll);
+        mochila.adicionarItem(escudo);
+        mochila.adicionarItem(canivete);
+        // Act
+        mochila.ordenarItens();
+        // Assert
+        assertEquals(elderScroll, mochila.getItens().get(0));
+        assertEquals(escudo, mochila.getItens().get(1));
+        assertEquals(canivete, mochila.getItens().get(2));
+    }
+    
+    @Test
+    public void ordenarItensVazio() {
+        // Arrange
+        Inventario mochila = new Inventario();
+        // Act
+        mochila.ordenarItens();
+        // Assert
+        assertEquals(0, mochila.getItens().size());
+    }
 
     private Inventario criarInventarioCom3Itens() {
         Inventario inventario = new Inventario();
