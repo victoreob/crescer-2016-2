@@ -104,7 +104,7 @@ public class InventarioTest {
         assertEquals(1045, inventario.getItens().get(1).getQuantidade());
         assertEquals(1003, inventario.getItens().get(2).getQuantidade());
     }
-    
+
     @Test
     public void aumentar1UnidadeDosItens() {
         Inventario inventario = criarInventarioCom3Itens();
@@ -113,7 +113,7 @@ public class InventarioTest {
         assertEquals(46, inventario.getItens().get(1).getQuantidade());
         assertEquals(4, inventario.getItens().get(2).getQuantidade());
     }
-    
+
     @Test
     public void aumentar0UnidadeDosItens() {
         Inventario inventario = criarInventarioCom3Itens();
@@ -122,14 +122,14 @@ public class InventarioTest {
         assertEquals(45, inventario.getItens().get(1).getQuantidade());
         assertEquals(3, inventario.getItens().get(2).getQuantidade());
     }
-    
+
     @Test
     public void aumentarUnidadeSemItens() {
         Inventario inventario = new Inventario();
         inventario.aumentarUnidadesDosItens(1000);
         assertEquals(0, inventario.getItens().size());
     }
-    
+
     @Test
     public void itemComMaiorQuantidadeCom3Itens() {
         Inventario inventario = criarInventarioCom3Itens();
@@ -137,7 +137,7 @@ public class InventarioTest {
         assertEquals("Poção polissuco", item.getDescricao());
         assertEquals(45, item.getQuantidade());
     }
-    
+
     @Test
     public void itemComMaiorQuantidadeCom3ItensDeQuantidadesIguais() {
         Inventario inventario = new Inventario();
@@ -148,14 +148,14 @@ public class InventarioTest {
         assertEquals("Espada de aço", item.getDescricao());
         assertEquals(2, item.getQuantidade());
     }
-    
+
     @Test
     public void itemComMaiorQuantidadeComInventarioVazio() {
         Inventario inventario = new Inventario();
         Item item = inventario.getItemComMaiorQuantidade();
         assertNull(item);
     }
-    
+
     @Test
     public void ordenarItensBaguncados() {
         // Arrange
@@ -173,7 +173,7 @@ public class InventarioTest {
         assertEquals(armadura, mochila.getItens().get(1));
         assertEquals(escudo, mochila.getItens().get(2));
     }
-    
+
     @Test
     public void ordenarItensComMesmaQuantidade() {
         // Arrange
@@ -191,7 +191,7 @@ public class InventarioTest {
         assertEquals(escudo, mochila.getItens().get(1));
         assertEquals(canivete, mochila.getItens().get(2));
     }
-    
+
     @Test
     public void ordenarItensVazio() {
         // Arrange
@@ -201,7 +201,7 @@ public class InventarioTest {
         // Assert
         assertEquals(0, mochila.getItens().size());
     }
-    
+
     @Test
     public void aumentarUnidadesProporcionalComInventarioVazio() {
         Inventario inventario = new Inventario();
