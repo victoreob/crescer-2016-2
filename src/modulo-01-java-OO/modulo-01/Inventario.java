@@ -81,9 +81,14 @@ public class Inventario {
     }
 
     public void ordenarItens() {
+        ordenarItens(TipoOrdenacao.ASCENDENTE);
+    }
+
+    public void ordenarItens(TipoOrdenacao tipoOrdenacao) {
         // Versão mais estável do Bubblesort - Melhor caso O(n), Pior caso O(n^2)
         // homenagem ao do-while: para forçar entrada na lógica
         boolean posicoesSendoTrocadas;
+        boolean ascendente = tipoOrdenacao == TipoOrdenacao.ASCENDENTE;
         do {
             posicoesSendoTrocadas = false;
             for (int j = 0; j < this.itens.size() - 1; j++) {
@@ -91,7 +96,7 @@ public class Inventario {
                 Item proximo = this.itens.get(j + 1);
 
                 boolean precisaTrocar = 
-                    itemAtual.getQuantidade() > proximo.getQuantidade();
+                    ascendente ? itemAtual.getQuantidade() > proximo.getQuantidade() : itemAtual.getQuantidade() < proximo.getQuantidade();
 
                 if (precisaTrocar) {
                     this.itens.set(j, proximo);
@@ -100,48 +105,10 @@ public class Inventario {
                 }
             }
         } while (posicoesSendoTrocadas);
-    }
 
-    public void ordenarItens(TipoOrdenacao tipoOrdenacao) {
-        if (tipoOrdenacao == TipoOrdenacao.ASCENDENTE) {
-            // Versão mais estável do Bubblesort - Melhor caso O(n), Pior caso O(n^2)
-            // homenagem ao do-while: para forçar entrada na lógica
-            boolean posicoesSendoTrocadas;
-            do {
-                posicoesSendoTrocadas = false;
-                for (int j = 0; j < this.itens.size() - 1; j++) {
-                    Item itemAtual = this.itens.get(j);
-                    Item proximo = this.itens.get(j + 1);
-
-                    boolean precisaTrocar = itemAtual.getQuantidade() > proximo.getQuantidade();
-
-                    if (precisaTrocar) {
-                        this.itens.set(j, proximo);
-                        this.itens.set(j + 1, itemAtual);
-                        posicoesSendoTrocadas = true;
-                    }
-                }
-            } while (posicoesSendoTrocadas);
-        } else if (tipoOrdenacao == TipoOrdenacao.DESCENDENTE) {
-            // Versão mais estável do Bubblesort - Melhor caso O(n), Pior caso O(n^2)
-            // homenagem ao do-while: para forçar entrada na lógica
-            boolean posicoesSendoTrocadas;
-            do {
-                posicoesSendoTrocadas = false;
-                for (int j = 0; j < this.itens.size() - 1; j++) {
-                    Item itemAtual = this.itens.get(j);
-                    Item proximo = this.itens.get(j + 1);
-
-                    boolean precisaTrocar = itemAtual.getQuantidade() < proximo.getQuantidade();
-
-                    if (precisaTrocar) {
-                        this.itens.set(j, proximo);
-                        this.itens.set(j + 1, itemAtual);
-                        posicoesSendoTrocadas = true;
-                    }
-                }
-            } while (posicoesSendoTrocadas);
-        }
     }
 }
+
+
+
 
