@@ -1,4 +1,5 @@
 public class Elfo extends Personagem {
+    
     public Elfo(String n) {
         // Chamando construtor debaixo
         this(n, 42);
@@ -6,6 +7,7 @@ public class Elfo extends Personagem {
 
     public Elfo(String nome, int quantidadeFlechas) {
         super(nome);
+        this.vida = 100;
         this.inventario.adicionarItem(new Item("Arco", 1));
         this.inventario.adicionarItem(new Item("Flechas", quantidadeFlechas >= 0 ? quantidadeFlechas : 42));
     }
