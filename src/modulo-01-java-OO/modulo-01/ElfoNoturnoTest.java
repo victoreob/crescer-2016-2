@@ -55,7 +55,7 @@ public class ElfoNoturnoTest {
 
     @Test
     public void quandoAtirarMuitasFlechasStatusMorto() {
-        ElfoNoturno elfoSuiçida = new ElfoNoturno("Night Legolas");
+        ElfoNoturno elfoSuiçida = new ElfoNoturno("Night Legolas", 90);
 
         for (int i = 0; i < 90; i++)
             elfoSuiçida.atirarFlecha(new Dwarf("Joe Doein", new DataTerceiraEra(1,1,1)));
@@ -68,10 +68,16 @@ public class ElfoNoturnoTest {
         ElfoNoturno elfoSuiçida = new ElfoNoturno("Harakiri", 91);
         for (int i = 0; i < 91; i++)
             elfoSuiçida.atirarFlecha(new Dwarf("Joe Doein", new DataTerceiraEra(1,1,1)));
-        
+
         assertEquals(270, elfoSuiçida.getExperiencia());
     }
+
+    @Test
+    public void elfoNoturnoSemFlechasNaoPerdeVida() {
+        ElfoNoturno elfoSuiçida = new ElfoNoturno("Harakiri", 1);
+        elfoSuiçida.atirarFlecha(new Dwarf("Joe Doein", new DataTerceiraEra(1,1,1)));
+        elfoSuiçida.atirarFlecha(new Dwarf("Joe Doein", new DataTerceiraEra(1,1,1)));
+        assertEquals(95, elfoSuiçida.getVida(), 0.);
+    }
 }
-
-
 

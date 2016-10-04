@@ -14,7 +14,7 @@ public class ElfoNoturno extends Elfo {
      * @param Dwarf Alvo que receberá flechada.
      */
     public void atirarFlecha(Dwarf dwarf) {
-        if (status == Status.VIVO) {
+        if (status == Status.VIVO && getFlecha().getQuantidade() > 0) {
             super.atirarFlechas(dwarf, 3);
             this.vida *= 0.95;
             this.status = (int)this.vida == 0 ? Status.MORTO : this.status;
