@@ -33,6 +33,14 @@ public class Item {
         int resultado = quantidadeAbsoluta * (quantidadeAbsoluta + 1) / 2;
         this.quantidade += (resultado * 1000);
     }
+    
+    @Override
+    public boolean equals(Object obj) {
+        Item outro = (Item)obj;
+        return
+            this.descricao.equals(outro.descricao) &&
+            this.quantidade == outro.quantidade;
+    }
 }
 
 

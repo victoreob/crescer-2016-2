@@ -53,4 +53,9 @@ public class ItemTest {
         item.aumentarProporcionalQuantidade();
         assertEquals(210020, item.getQuantidade());
     }
+    
+    @Test
+    public void igualdadeDeItens() {
+        assertEquals(new Item("Espada Z", 1), new Item("Espada Z", 1));
+    }
 }
