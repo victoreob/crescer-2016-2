@@ -11,15 +11,19 @@ public class ElfoVerde extends Elfo {
         this.experiencia++;
     }
 
-    public void adicionarItem(Item item) {
-        String[] validas = new String[] { 
-                "Espada de aço valiriano", 
-                "Arco e Flecha de Vidro"
-            };
+    public void adicionarItem(Item item) {        
+        String[] validas = getNomesValidos();
         boolean podeAdicionar = item != null && new ArrayList<>(Arrays.asList(validas)).contains(item.getDescricao());
 
         if (podeAdicionar) {
             super.adicionarItem(item);
         }
+    }
+
+    private String[] getNomesValidos() {
+        return new String[] { 
+            "Espada de aço valiriano", 
+            "Arco e Flecha de Vidro"
+        };
     }
 }
