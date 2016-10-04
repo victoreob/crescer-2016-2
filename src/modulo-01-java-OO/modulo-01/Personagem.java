@@ -9,7 +9,7 @@ public class Personagem {
         this.status = Status.VIVO;
         this.inventario = new Inventario();
     }
-    
+
     public void setNome(String n) {
         nome = n;
     }
@@ -28,5 +28,13 @@ public class Personagem {
 
     public int getExperiencia() {
         return experiencia;
+    }
+
+    public void adicionarItem(Item item) {
+        this.inventario.adicionarItem(item);
+    }
+
+    public void perderItem(Item item) {
+        this.inventario.removerItem(item);
     }
 }
