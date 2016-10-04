@@ -1,4 +1,4 @@
-public class Personagem {
+public abstract class Personagem {
     protected String nome;
     protected int experiencia;
     protected Inventario inventario;
@@ -42,4 +42,6 @@ public class Personagem {
     public void perderItem(Item item) {
         this.inventario.removerItem(item);
     }
+    
+    abstract void inicializarInventario(int quantidadeFlechas);
 }

@@ -65,4 +65,6 @@ public class Dwarf extends Personagem {
             inventario.aumentarUnidadesDosItens(1000);
         }
     }
+    
+    public void inicializarInventario(int quantidadeFlechas) { }
 }
