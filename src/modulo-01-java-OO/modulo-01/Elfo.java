@@ -21,11 +21,15 @@ public class Elfo extends Personagem {
     }
 
     public void atirarFlecha(Dwarf dwarf) {
+        atirarFlechas(dwarf, 1);
+    }
+    
+    protected void atirarFlechas(Dwarf dwarf, int fatorExperiencia) {
         int quantidadeFlechas = getFlecha().getQuantidade();
         boolean temFlecha = quantidadeFlechas > 0;
         if (temFlecha) {
             getFlecha().setQuantidade(quantidadeFlechas - 1);
-            experiencia++;
+            experiencia += 1 * fatorExperiencia;
             dwarf.perderVida();
         }
     }

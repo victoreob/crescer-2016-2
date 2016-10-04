@@ -5,10 +5,14 @@ public class ElfoVerde extends Elfo {
     public ElfoVerde(String nome) {
         super(nome);
     }
+    
+    public ElfoVerde(String nome, int quantidadeFlechas) {
+        super(nome, quantidadeFlechas);
+    }
 
+    @Override
     public void atirarFlecha(Dwarf dwarf) {
-        super.atirarFlecha(dwarf);
-        this.experiencia++;
+        super.atirarFlechas(dwarf, 2);
     }
 
     public void adicionarItem(Item item) {        

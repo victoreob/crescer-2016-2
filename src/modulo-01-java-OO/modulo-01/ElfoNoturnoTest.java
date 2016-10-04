@@ -58,8 +58,20 @@ public class ElfoNoturnoTest {
         ElfoNoturno elfoSuiçida = new ElfoNoturno("Night Legolas");
 
         for (int i = 0; i < 90; i++)
-                elfoSuiçida.atirarFlecha(new Dwarf("Joe Doein", new DataTerceiraEra(1,1,1)));
+            elfoSuiçida.atirarFlecha(new Dwarf("Joe Doein", new DataTerceiraEra(1,1,1)));
 
         assertEquals(Status.MORTO, elfoSuiçida.getStatus());
-    }   
+    }
+
+    @Test
+    public void elfoNoturnoNaoAtiraSeEstaMorto() {
+        ElfoNoturno elfoSuiçida = new ElfoNoturno("Harakiri", 91);
+        for (int i = 0; i < 91; i++)
+            elfoSuiçida.atirarFlecha(new Dwarf("Joe Doein", new DataTerceiraEra(1,1,1)));
+        
+        assertEquals(270, elfoSuiçida.getExperiencia());
+    }
 }
+
+
+
