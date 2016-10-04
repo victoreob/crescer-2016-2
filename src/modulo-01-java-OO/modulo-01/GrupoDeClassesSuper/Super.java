@@ -5,7 +5,7 @@ public class Super extends SuperDaSuper {
     public void foo() {
         variavel++;
         super.foo();
-        new ClasseInterna().interna++;
+        //new ClasseInterna().interna++;
         System.out.println("Super");
     }
 }
