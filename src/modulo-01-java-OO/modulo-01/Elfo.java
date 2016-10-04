@@ -1,5 +1,5 @@
 public class Elfo extends Personagem {
-    
+
     public Elfo(String n) {
         // Chamando construtor debaixo
         this(n, 42);
@@ -8,8 +8,7 @@ public class Elfo extends Personagem {
     public Elfo(String nome, int quantidadeFlechas) {
         super(nome);
         this.vida = 100;
-        this.inventario.adicionarItem(new Item("Arco", 1));
-        this.inventario.adicionarItem(new Item("Flechas", quantidadeFlechas >= 0 ? quantidadeFlechas : 42));
+        this.inicializarInventario(quantidadeFlechas);
     }
 
     public Item getArco() {
@@ -23,7 +22,7 @@ public class Elfo extends Personagem {
     public void atirarFlecha(Dwarf dwarf) {
         atirarFlechas(dwarf, 1);
     }
-    
+
     protected void atirarFlechas(Dwarf dwarf, int fatorExperiencia) {
         int quantidadeFlechas = getFlecha().getQuantidade();
         boolean temFlecha = quantidadeFlechas > 0;
@@ -32,6 +31,11 @@ public class Elfo extends Personagem {
             experiencia += 1 * fatorExperiencia;
             dwarf.perderVida();
         }
+    }
+
+    protected void inicializarInventario(int quantidadeFlechas) {
+        this.inventario.adicionarItem(new Item("Arco", 1));
+        this.inventario.adicionarItem(new Item("Flechas", quantidadeFlechas >= 0 ? quantidadeFlechas : 42));
     }
 
     public String toString() {

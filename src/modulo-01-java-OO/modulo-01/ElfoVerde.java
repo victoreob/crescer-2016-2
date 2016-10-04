@@ -5,7 +5,7 @@ public class ElfoVerde extends Elfo {
     public ElfoVerde(String nome) {
         super(nome);
     }
-    
+
     public ElfoVerde(String nome, int quantidadeFlechas) {
         super(nome, quantidadeFlechas);
     }
@@ -13,6 +13,12 @@ public class ElfoVerde extends Elfo {
     @Override
     public void atirarFlecha(Dwarf dwarf) {
         super.atirarFlechas(dwarf, 2);
+    }
+
+    @Override
+    protected void inicializarInventario(int quantidadeFlechas) {
+        this.adicionarItem(new Item("Arco de Vidro", 1));
+        this.adicionarItem(new Item("Flecha de Vidro", quantidadeFlechas >= 0 ? quantidadeFlechas : 42));
     }
 
     public void adicionarItem(Item item) {        
@@ -27,7 +33,8 @@ public class ElfoVerde extends Elfo {
     private String[] getNomesValidos() {
         return new String[] { 
             "Espada de aço valiriano", 
-            "Arco e Flecha de Vidro"
+            "Arco de Vidro",
+            "Flecha de Vidro"
         };
     }
 }
