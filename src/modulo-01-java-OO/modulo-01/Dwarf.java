@@ -1,5 +1,4 @@
 public class Dwarf extends Personagem {
-    private int vida;
     private DataTerceiraEra dataNascimento;
 
     // java type initializer
@@ -30,7 +29,7 @@ public class Dwarf extends Personagem {
             this.experiencia += 2;
         }
         if (numero > 100) {
-            int vidaAposFlechada = this.vida - 10;
+            double vidaAposFlechada = this.vida - 10;
             if (vidaAposFlechada == 0) {
                 status = Status.MORTO;
             }
@@ -38,10 +37,6 @@ public class Dwarf extends Personagem {
                 vida = vidaAposFlechada;
             }
         }
-    }
-
-    public int getVida() {
-        return vida;
     }
 
     public DataTerceiraEra getDataNascimento() {
