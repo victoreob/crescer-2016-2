@@ -17,8 +17,11 @@ public class ElfoVerdeTest {
     @Test
     public void elfoVerdeAdicionaItemComDescricaoInvalida() {
         ElfoVerde sortudo = new ElfoVerde("Mugless");
-        sortudo.adicionarItem(new Item("Caneca", 1));
+        Item caneca = new Item("Caneca", 1);
+        sortudo.adicionarItem(caneca);
+        boolean adicionou = sortudo.getInventario().getItens().contains(caneca);
         assertEquals(2, sortudo.getInventario().getItens().size());
+        assertFalse(adicionou);
     }
 
     @Test
