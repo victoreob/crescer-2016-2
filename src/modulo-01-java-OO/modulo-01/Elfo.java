@@ -1,5 +1,7 @@
 public class Elfo extends Personagem {
 
+    private static int contadorDeElfos;
+    
     public Elfo(String n) {
         // Chamando construtor debaixo
         this(n, 42);
@@ -9,6 +11,18 @@ public class Elfo extends Personagem {
         super(nome);
         this.vida = 100;
         this.inicializarInventario(quantidadeFlechas);
+        Elfo.contadorDeElfos++;
+    }
+    
+    // ~Elfo() { }
+    // https://docs.oracle.com/javase/7/docs/api/java/lang/Object.html#finalize()
+    protected void finalize() throws Throwable {
+        super.finalize();
+        Elfo.contadorDeElfos--;
+    }
+    
+    public static int getContadorDeElfos() {
+        return Elfo.contadorDeElfos;
     }
 
     public Item getArco() {

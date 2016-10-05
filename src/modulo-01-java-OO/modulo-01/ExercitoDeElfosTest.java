@@ -5,6 +5,13 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 public class ExercitoDeElfosTest {
+    
+    @After
+    // executa após cada cenário de testes.
+    public void tearDown() {
+        System.gc();
+    }
+    
     @Test
     public void alistarUmElfoVerde() {
         ExercitoDeElfos exercito = new ExercitoDeElfos();

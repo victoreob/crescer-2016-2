@@ -5,6 +5,12 @@ import org.junit.Test;
 
 public class ElfoNoturnoTest {
 
+    @After
+    // executa após cada cenário de testes.
+    public void tearDown() {
+        System.gc();
+    }
+    
     @Test
     public void quandoatirarFlechaGanha3DeExperiencia() {
         ElfoNoturno elfoNoturno = new ElfoNoturno("Night Legolas");
