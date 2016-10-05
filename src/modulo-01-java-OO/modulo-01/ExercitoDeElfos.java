@@ -46,4 +46,19 @@ public class ExercitoDeElfos {
         }
         return null;
     }
+    
+    public ArrayList<Elfo> buscar(Status status) {
+        // C#: return contingente.Where(x => x.Status == status);
+        ArrayList<Elfo> resultado = new ArrayList<>();
+        
+        for (Elfo elfo : contingente) {
+            if (elfo.getStatus() == status) {
+                resultado.add(elfo);
+            }
+        }
+        
+        return resultado;
+    }
+    
+    
 }
