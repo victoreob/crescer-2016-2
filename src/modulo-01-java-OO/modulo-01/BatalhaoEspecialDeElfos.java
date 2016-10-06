@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.Arrays;
 import java.util.Map;
 
-public class BatalhaoEspecialDeElfos {
+public class BatalhaoEspecialDeElfos implements Exercito {
     private HashMap<String, ArrayList<Elfo>> contingente;
     private HashMap<Status, ArrayList<Elfo>> grupoPorStatus;
 
@@ -57,6 +57,10 @@ public class BatalhaoEspecialDeElfos {
     public ArrayList<Elfo> buscar(Status status) {
         agruparPorStatus();
         return grupoPorStatus.get(status);
+    }
+    
+    public void atacar() {
+        System.out.println("Batalhão especial lacrando");
     }
 }
 
