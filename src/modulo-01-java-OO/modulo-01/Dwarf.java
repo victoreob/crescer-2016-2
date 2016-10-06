@@ -1,5 +1,8 @@
+// Java: public final class
+// C#: public sealed class
 public class Dwarf extends Personagem {
-    private DataTerceiraEra dataNascimento;
+    private final DataTerceiraEra dataNascimento;
+    public final static double ALTURA_MAXIMA = 1.32;
 
     // java type initializer
     // vai ser replicado para cada construtor
