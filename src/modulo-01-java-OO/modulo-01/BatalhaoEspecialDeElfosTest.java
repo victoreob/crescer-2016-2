@@ -81,7 +81,7 @@ public class BatalhaoEspecialDeElfosTest {
         batalhao.alistar(recruta1);
         batalhao.alistar(recruta2);
         batalhao.agruparPorStatus();
-        ArrayList<Elfo> resultado = batalhao.buscar(Status.VIVO);
+        List<Elfo> resultado = batalhao.buscar(Status.VIVO);
         assertEquals(2, resultado.size());
         assertTrue(resultado.contains(recruta1));
         assertTrue(resultado.contains(recruta2));
@@ -97,7 +97,7 @@ public class BatalhaoEspecialDeElfosTest {
         batalhao.alistar(recruta2);
         batalhao.alistar(recruta3);
         batalhao.agruparPorStatus();
-        ArrayList<Elfo> resultado = batalhao.buscar(Status.MORTO);
+        List<Elfo> resultado = batalhao.buscar(Status.MORTO);
         assertEquals(2, resultado.size());
         assertTrue(resultado.contains(recruta2));
         assertTrue(resultado.contains(recruta3));
@@ -110,10 +110,10 @@ public class BatalhaoEspecialDeElfosTest {
         Elfo recruta2 = new ElfoVerde("Phaendar Holabanise");
         batalhao.alistar(recruta1);
         batalhao.agruparPorStatus();        
-        ArrayList<Elfo> resultado = batalhao.buscar(Status.VIVO);
+        List<Elfo> resultado = batalhao.buscar(Status.VIVO);
         batalhao.alistar(recruta2);
         for (int i = 0; i < 91; i++) recruta1.atirarFlecha(new Dwarf());
-        ArrayList<Elfo> buscaAposMorte = batalhao.buscar(Status.VIVO);
+        List<Elfo> buscaAposMorte = batalhao.buscar(Status.VIVO);
         assertEquals(1, buscaAposMorte.size());
         assertEquals(recruta2, buscaAposMorte.get(0));
     }

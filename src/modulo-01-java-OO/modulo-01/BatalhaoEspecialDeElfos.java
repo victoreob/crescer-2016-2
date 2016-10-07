@@ -1,8 +1,4 @@
-import java.util.HashMap;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Arrays;
-import java.util.Map;
+import java.util.*;
 
 public class BatalhaoEspecialDeElfos implements Exercito {
     private HashMap<String, ArrayList<Elfo>> contingente;
@@ -54,7 +50,7 @@ public class BatalhaoEspecialDeElfos implements Exercito {
         }
     }
     
-    public ArrayList<Elfo> buscar(Status status) {
+    public List<Elfo> buscar(Status status) {
         agruparPorStatus();
         return grupoPorStatus.get(status);
     }

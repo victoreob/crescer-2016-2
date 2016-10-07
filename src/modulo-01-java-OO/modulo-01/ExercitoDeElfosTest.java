@@ -2,42 +2,49 @@ import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import java.util.ArrayList;
+import java.util.*;
 
 public class ExercitoDeElfosTest {
-    
+
     @After
     // executa após cada cenário de testes.
     public void tearDown() {
         System.gc();
     }
-    
+
     @Test
     public void alistarUmElfoVerde() {
         ExercitoDeElfos exercito = new ExercitoDeElfos();
         Elfo elfoVerde = new ElfoVerde("Elfo Verde");
-        exercito.alistar(elfoVerde);
-        assertEquals(elfoVerde, exercito.getContingente()[0]);
+        try {
+            exercito.alistar(elfoVerde);
+            assertEquals(elfoVerde, exercito.getContingente()[0]);
+        } catch (NaoPodeAlistarException naoPodeAlistarException) {
+            System.out.println(
+                naoPodeAlistarException.getMessage() + 
+                naoPodeAlistarException.getStackTrace()
+            );
+        }
     }
 
     @Test
-    public void alistarUmElfoNoturno() {
+    public void alistarUmElfoNoturno() throws NaoPodeAlistarException {
         ExercitoDeElfos exercito = new ExercitoDeElfos();
         Elfo elfoNoturno = new ElfoNoturno("Night Elf");
         exercito.alistar(elfoNoturno);
         assertEquals(elfoNoturno, exercito.getContingente()[0]);
     }
 
-    @Test
-    public void alistarUmElfoNormal() {
+    @Test(expected=NaoPodeAlistarException.class)
+    public void alistarUmElfoNormal() throws NaoPodeAlistarException {
         ExercitoDeElfos exercito = new ExercitoDeElfos();
         Elfo elfoNormal = new Elfo("Elfo Normal");
         exercito.alistar(elfoNormal);
         assertEquals(0, exercito.getContingente().length);
     }
 
-    @Test
-    public void alistarDosTresTiposSoEntramVerdesENoturnos() {
+    @Test(expected=NaoPodeAlistarException.class)
+    public void alistarDosTresTiposSoEntramVerdesENoturnos() throws NaoPodeAlistarException {
         ExercitoDeElfos exercito = new ExercitoDeElfos();
         Elfo elfoVerde = new ElfoVerde("Elfo Verde");
         Elfo elfoNormal = new Elfo("Elfo Normal");
@@ -56,7 +63,7 @@ public class ExercitoDeElfosTest {
     }
 
     @Test
-    public void buscarPorNomeTendoApenasUmComAqueleNome() {
+    public void buscarPorNomeTendoApenasUmComAqueleNome() throws NaoPodeAlistarException {
         ExercitoDeElfos exercito = new ExercitoDeElfos();
         Elfo recruta1 = new ElfoVerde("Elfo Recruta 1");
         Elfo recruta2 = new ElfoNoturno("Elfo Recruta 2");
@@ -68,7 +75,7 @@ public class ExercitoDeElfosTest {
     }
 
     @Test
-    public void buscarPorNomeTendoVariosComAqueleNome() {
+    public void buscarPorNomeTendoVariosComAqueleNome() throws NaoPodeAlistarException {
         ExercitoDeElfos exercito = new ExercitoDeElfos();
         Elfo recruta1 = new ElfoVerde("Elfo Recruta");
         Elfo recruta2 = new ElfoNoturno("Elfo Recruta 2");
@@ -80,7 +87,7 @@ public class ExercitoDeElfosTest {
     }
 
     @Test
-    public void buscarPorStatusVivo() {
+    public void buscarPorStatusVivo() throws NaoPodeAlistarException {
         ExercitoDeElfos exercito = new ExercitoDeElfos();
         Elfo recruta1 = new ElfoVerde("Elfo Recruta");
         Elfo recruta2 = new ElfoNoturno("Elfo Recruta 2");
@@ -88,7 +95,7 @@ public class ExercitoDeElfosTest {
         exercito.alistar(recruta1);
         exercito.alistar(recruta2);
         exercito.alistar(recruta3);
-        ArrayList<Elfo> resultado = exercito.buscar(Status.VIVO);
+        List<Elfo> resultado = exercito.buscar(Status.VIVO);
         assertEquals(3, resultado.size());
         assertEquals(recruta1, resultado.get(0));
         assertEquals(recruta2, resultado.get(1));
@@ -96,7 +103,7 @@ public class ExercitoDeElfosTest {
     }
 
     @Test
-    public void buscarPorStatusMorto() {
+    public void buscarPorStatusMorto() throws NaoPodeAlistarException {
         ExercitoDeElfos exercito = new ExercitoDeElfos();
         Elfo recruta1 = new ElfoVerde("Elfo Recruta");
         Elfo recruta2 = criarElfoNoturnoEMatalo();
@@ -104,13 +111,13 @@ public class ExercitoDeElfosTest {
         exercito.alistar(recruta1);
         exercito.alistar(recruta2);
         exercito.alistar(recruta3);
-        ArrayList<Elfo> resultado = exercito.buscar(Status.MORTO);
+        List<Elfo> resultado = exercito.buscar(Status.MORTO);
         assertEquals(1, resultado.size());
         assertEquals(recruta2, resultado.get(0));
     }
-    
+
     @Test
-    public void buscarPorStatusMortoNenhumMorto() {
+    public void buscarPorStatusMortoNenhumMorto() throws NaoPodeAlistarException {
         ExercitoDeElfos exercito = new ExercitoDeElfos();
         Elfo recruta1 = new ElfoVerde("Elfo Recruta");
         Elfo recruta2 = new ElfoNoturno("Elfo Recruta 2");
@@ -122,7 +129,7 @@ public class ExercitoDeElfosTest {
     }
 
     @Test
-    public void buscarPorStatusVivoNenhumVivo() {
+    public void buscarPorStatusVivoNenhumVivo() throws NaoPodeAlistarException {
         ExercitoDeElfos exercito = new ExercitoDeElfos();
         Elfo recruta1 = criarElfoNoturnoEMatalo();
         Elfo recruta2 = criarElfoNoturnoEMatalo();
@@ -132,7 +139,7 @@ public class ExercitoDeElfosTest {
         exercito.alistar(recruta3);
         assertTrue(exercito.buscar(Status.VIVO).isEmpty());
     }
-    
+
     private ElfoNoturno criarElfoNoturnoEMatalo() {
         ElfoNoturno suicida = new ElfoNoturno("Elfo kamikaze", 90);
         for (int i = 0; i < 90; i++)

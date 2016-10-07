@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 public class Jogo {
 
@@ -6,14 +7,34 @@ public class Jogo {
 
     public static void main(String[] args) {
         System.out.println(texto);
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Escolha o tipo de Exército:");
         System.out.println("1 - Exército normal");
         System.out.println("2 - Batalhão especial");
         System.out.println("3 - Faca na caveira");
-        int tipo = scanner.nextInt();
-        Exercito exercito = Jogo.criarExercito(tipo);
-        exercito.atacar();
+        try {
+            Exercito exercito = criarExercito();
+            if (exercito != null) {
+                exercito.atacar();
+            }
+        } catch (NaoPodeAlistarException inputException) {
+            System.out.println("Tratando novamente!");
+        }
+    }
+
+    private static Exercito criarExercito() throws NaoPodeAlistarException {
+        Exercito exercito = null;
+        try {
+            Scanner scanner = new Scanner(System.in);
+            int tipo = scanner.nextInt();
+            exercito = Jogo.criarExercito(tipo);
+        } catch(InputMismatchException ime) {
+            System.out.println("Informe um tipo correto de exército. Tente novamente. Contate o administrador. Bad, bad server, no donut for you.");
+            throw new NaoPodeAlistarException();
+        } /*catch(Exception ex) {
+            System.out.println("Tente novamente.");
+        } */finally {
+            return exercito;
+        }
     }
 
     private static Exercito criarExercito(int tipo) {

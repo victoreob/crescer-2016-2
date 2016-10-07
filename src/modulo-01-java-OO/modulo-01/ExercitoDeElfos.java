@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.*;
 
 public class ExercitoDeElfos implements Exercito {
     private ArrayList<Elfo> contingente;
@@ -11,7 +11,7 @@ public class ExercitoDeElfos implements Exercito {
         return contingente.toArray(new Elfo[contingente.size()]);
     }
 
-    public void alistar(Elfo elfo) {
+    public void alistar(Elfo elfo) throws NaoPodeAlistarException {
 
         //String nomeClasse = elfo.getClass().getName();
         //Class clazz = elfo.getClass();
@@ -20,9 +20,10 @@ public class ExercitoDeElfos implements Exercito {
             //clazz == ElfoVerde.class || clazz == ElfoNoturno.class;
             elfo instanceof ElfoVerde || elfo instanceof ElfoNoturno;
 
-        if (podeAlistar) {
-            contingente.add(elfo);
+        if (!podeAlistar) {
+            throw new NaoPodeAlistarException();
         }
+        contingente.add(elfo);
     }
 
     /**
@@ -47,7 +48,7 @@ public class ExercitoDeElfos implements Exercito {
         return null;
     }
 
-    public ArrayList<Elfo> buscar(Status status) {
+    public List<Elfo> buscar(Status status) {
         // C#: return contingente.Where(x => x.Status == status);
         ArrayList<Elfo> resultado = new ArrayList<>();
 
