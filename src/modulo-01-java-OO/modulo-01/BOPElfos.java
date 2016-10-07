@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class BOPElfos implements Exercito {
+public class BOPElfos implements Exercito, ExercitoQueLimpaItens {
     public Elfo[] getContingente() {
         return null;
     }
@@ -15,5 +15,9 @@ public class BOPElfos implements Exercito {
     }
     public void atacar() {
         System.out.println("Você é muleque!!!");
+    }
+    
+    public void limparItensEspeciais() {
+        // vai ter lógica de limpeza de itens especiais
     }
 }
