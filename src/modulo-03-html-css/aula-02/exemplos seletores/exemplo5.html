@@ -6,15 +6,18 @@
     <style>
         .btn {
             min-width: 80px;
-            min-height: 35px;
-            border-radius: 10px;
+            min-height: 18px;
+            border-radius: 32px;
             margin: 5px;
             background-color: #eee;
-            display: inline;
-            padding: 5px;
+            display: inline-block;
+            padding: 5px 15px;
             text-decoration: none;
-            color: #444;
-            font-family: arial;            
+            font-weight: bold;
+            color: #555;
+            font-family: arial;
+            text-align: center;
+            border: 1px solid silver;            
         }
 
         .btn:hover {
@@ -22,16 +25,18 @@
         }
 
         .btn.sucess {
-            background-color: green;
+            background-color: #73d173;
         }
 
         .btn.warning {
-            background-color: red;
+            background-color: #F44336;
+            color: #393939;
         }
 
         .info {
-            background-color: blue;
+            background-color: rgba(0, 161, 255, 0.35);
         }
+
     </style>
 </head>
 <body>
@@ -39,6 +44,6 @@
     <div class="btn warning">Cancelar</div>
     <div class="btn info">Ajuda</div>
     <span class="btn">Span</span>
-    <a href="#" class="btn">LINK</a>
+    <a href="#" class="btn">Link</a>
 </body>
 </html>
