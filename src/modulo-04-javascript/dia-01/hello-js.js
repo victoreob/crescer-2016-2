@@ -1,7 +1,6 @@
 console.log('Olá "JS"!');
 console.log('Olá \'JS\'!');
 
-var elfo = { nome: 'Legolas', experiencia: 1 };
 console.log("Nome: 'oi'", elfo.nome);
 elfo.flechas = 42;
 console.log(elfo.flechas);
@@ -26,3 +25,7 @@ var dwarf = elfo.atirarFlecha({ vida: 110 }, 'oi', true, 'batman');
 
 
 console.log(elfo, dwarf);
+
+elfo.nome = 'Fingolfin';
+exibirElfoNaTela(elfo);
+// console.log(maiusculo(elfo.nome)); ReferenceError
