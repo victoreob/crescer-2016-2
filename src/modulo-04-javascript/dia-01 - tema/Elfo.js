@@ -13,6 +13,9 @@ class Elfo {
     this._nome = nome;
     this.flechas = flechas;
   }
+  static alturaMaximaElfos() {
+    return 4.5;
+  }
   atirarFlecha() {
     this.flechas--;
   }
