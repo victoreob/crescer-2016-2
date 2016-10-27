@@ -1,6 +1,6 @@
 var ctrlC = function (obj) {
 
-  var resultado = {};
+  let resultado = {};
   for (var prop in obj) {
     resultado[prop] = obj[prop];
   }
