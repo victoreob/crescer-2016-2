@@ -8,6 +8,7 @@
     <meta charset="UTF-8">
     <title>Street Fighter - Inicio</title>
     <link href="~/Content/estilo.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -16,7 +17,7 @@
             <a href="~/StreetFighter/Index">Inicio</a>
         </span>
         <span class="item">
-            <a href="https://www.google.com.br/search?q=Street+Fighter&tbm=nws">Noticia</a>
+            <a href="~/StreetFighter/Cadastro">Cadastro</a>
         </span>
         <span class="item">
             <a href="~/StreetFighter/FichaTecnica">Ficha Técnica</a>
@@ -31,8 +32,12 @@
             <h1>@ViewBag.Title</h1>
         </div>
 
-        @RenderBody()
+        <div class="corpo">
+            @RenderBody()
+        </div>
     </div>
+
+    @RenderSection("Scripts", false)
 </body>
 </html>
 

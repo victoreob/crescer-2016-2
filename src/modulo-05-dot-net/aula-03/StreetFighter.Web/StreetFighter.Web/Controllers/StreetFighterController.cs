@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StreetFighter.Web.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +12,19 @@ namespace StreetFighter.Web.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult Cadastro()
+        {
+            return View();
+        }
+
+        public ActionResult Salvar(FichaTecnicaModel model)
+        {
+            if (ModelState.IsValid)
+                return View("FichaTecnica", model);
+            else
+                return View("Cadastro", model);
         }
     }
 }
