@@ -19,14 +19,6 @@ namespace StreetFighter.Web.Controllers
             return View();
         }
 
-        public ActionResult FichaTecnica()
-        {
-            var model = new FichaTecnicaModel();
-            model.Nome = "Blanka";
-
-            return View(model);
-        }
-
         public ActionResult Salvar(FichaTecnicaModel model)
         {
             if (ModelState.IsValid)
