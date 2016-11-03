@@ -19,10 +19,27 @@ namespace StreetFighter.Web.Controllers
             return View();
         }
 
+        [Route("BLABLABLA/Nunes/HelloWorld")]
+        [Route("RotaOpcional2")]
+        public ActionResult ExemploRedirecionamento(bool redirecionar)
+        {
+            if (redirecionar)
+            {
+                TempData["Mensagem"] = "Ocorreu um redirecionamento.";
+
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View("Index");
+            }
+        }
+
         public ActionResult FichaTecnica()
         {
             var model = new FichaTecnicaModel();
             model.Nome = "Blanka";
+            model.Id = 2;
 
             return View(model);
         }

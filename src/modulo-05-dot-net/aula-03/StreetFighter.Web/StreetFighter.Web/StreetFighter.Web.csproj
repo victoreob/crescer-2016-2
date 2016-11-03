@@ -137,6 +137,7 @@
     <Content Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\StreetFighter\FichaTecnica.cshtml" />
     <Content Include="Views\StreetFighter\Cadastro.cshtml" />
+    <Content Include="Views\Shared\_Enquete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
