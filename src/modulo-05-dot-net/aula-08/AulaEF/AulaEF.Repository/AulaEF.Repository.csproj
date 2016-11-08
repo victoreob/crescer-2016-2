@@ -50,23 +50,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseRepository.cs" />
     <Compile Include="DatabaseContext.cs" />
-    <Compile Include="Migrations\201611081659496_Initial.cs" />
-    <Compile Include="Migrations\201611081659496_Initial.Designer.cs">
-      <DependentUpon>201611081659496_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201611081701176_AddingIsActiveToUser.cs" />
-    <Compile Include="Migrations\201611081701176_AddingIsActiveToUser.Designer.cs">
-      <DependentUpon>201611081701176_AddingIsActiveToUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201611081704223_AddingUserRole.cs" />
-    <Compile Include="Migrations\201611081704223_AddingUserRole.Designer.cs">
-      <DependentUpon>201611081704223_AddingUserRole.cs</DependentUpon>
+    <Compile Include="Migrations\201611081846114_Initial.cs" />
+    <Compile Include="Migrations\201611081846114_Initial.Designer.cs">
+      <DependentUpon>201611081846114_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserRepository.cs" />
+    <Compile Include="UserRoleRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AulaEF.Dominio\AulaEF.Dominio.csproj">
@@ -79,14 +71,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611081659496_Initial.resx">
-      <DependentUpon>201611081659496_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611081701176_AddingIsActiveToUser.resx">
-      <DependentUpon>201611081701176_AddingIsActiveToUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611081704223_AddingUserRole.resx">
-      <DependentUpon>201611081704223_AddingUserRole.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201611081846114_Initial.resx">
+      <DependentUpon>201611081846114_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
