@@ -39,17 +39,22 @@ class TelaPrincipal {
 
   sincronizar() {
     let self = this;
-    let url = 'https://gateway.marvel.com:443/v1/public/characters?apikey=7ae597c1277cc37f2a4001139b3e2199&orderBy=-modified&limit=20';
-    $.get(url).then((res) => {
-      res.data.results.forEach(
-        (heroiMarvel) => {
-          let heroiASerCriado = {
-            nome: heroiMarvel.name,
-            urlThumbnail: `${heroiMarvel.thumbnail.path}.${heroiMarvel.thumbnail.extension}`
+    let url = 'https://gateway.marvel.com:443/v1/public/characters?apikey=&orderBy=-modified&limit=20';
+    $.get(url).then(
+      (res) => {
+        res.data.results.forEach(
+          (heroiMarvel) => {
+            let heroiASerCriado = {
+              nome: heroiMarvel.name,
+              urlThumbnail: `${heroiMarvel.thumbnail.path}.${heroiMarvel.thumbnail.extension}`
+            }
+            self.cadastrarNovoHeroi(heroiASerCriado)
           }
-          self.cadastrarNovoHeroi(heroiASerCriado)
-        }
-      )
+        )
+      }
+    ).catch((err) => {
+      console.error('Erro na comunicação com a Marvel. Verifique suas credenciais!');
+      console.error(`${err.responseJSON.code} - ${err.responseJSON.message}`);
     });
   }
 
