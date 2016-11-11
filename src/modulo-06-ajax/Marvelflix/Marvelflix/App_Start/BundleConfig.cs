@@ -37,6 +37,7 @@ namespace Marvelflix
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                  "~/Content/bootstrap.css",
+                 "~/Content/Loader.css",
                  "~/Content/Site.css"));
         }
     }

@@ -62,7 +62,7 @@ class TelaPrincipal {
   }
 
   renderizarEstadoInicial() {
-    $('.tela-centralizada').removeClass('tela-centralizada');
+    $('section.tela-centralizada').removeClass('tela-centralizada');
     this.$elem.show();
     this.paginaAtual = 1;
     this.carregarERenderizarHerois(this.pagina);

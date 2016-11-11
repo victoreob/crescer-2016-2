@@ -1,5 +1,9 @@
 let marvelflix = {};
 
+marvelflix.toggleLoader = () => {
+  ['.loader', '.tela'].forEach(seletor => $(seletor).toggle());
+};
+
 marvelflix.renderizarTela = function(nome) {
 
   // escondendo todas as telas antes de renderizar a tela correta

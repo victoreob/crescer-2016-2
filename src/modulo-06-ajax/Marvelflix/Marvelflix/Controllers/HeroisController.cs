@@ -16,6 +16,10 @@ namespace Marvelflix.Controllers
         {
             //pagina = pagina ?? 1;
             //tamanhoPagina = tamanhoPagina ?? 5;
+
+            // simulando lentidão
+            System.Threading.Thread.Sleep(1500);
+
             return herois.Todos(pagina, tamanhoPagina);
         }
 
