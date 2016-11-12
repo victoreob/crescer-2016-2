@@ -9,6 +9,25 @@ class TelaPrincipal {
 
   registrarBindsEventos(self) {
 
+    $('li[data-heroi-id]').each(function () {
+      $(this).click(function () {
+        let idHeroi = $(this).attr('data-heroi-id');
+        console.log(idHeroi);
+        marvelflix.render('#listagem-comics', 'listagem-comics', {
+          selecionado: {
+            id: idHeroi,
+            comic_thumbnail: 'http://d1466nnw0ex81e.cloudfront.net/n_iv/600/1199087.jpg',
+            comics: [
+              { title: 'Titulo 1' },
+              { title: 'Titulo 2' },
+              { title: 'Titulo 3' },
+              { title: 'Titulo 4' },
+            ]
+          }
+        })
+      });
+    });
+
     self.$btnSincronizar = $('#btn-sincronizar-com-marvel');
     self.$btnProximaPagina = $('#btn-proxima-pagina');
     self.$btnPaginaAnterior = $('#btn-pagina-anterior');
