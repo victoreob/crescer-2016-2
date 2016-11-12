@@ -2,6 +2,7 @@ class TelaPrincipal {
   
   constructor(seletor) {
     this.$elem = $(seletor);
+    this.herois = new Herois();
     this.qtdHeroisPorPagina = 5;
     this.renderizarEstadoInicial();
   }
@@ -38,8 +39,9 @@ class TelaPrincipal {
   }
 
   sincronizar() {
+
     let self = this;
-    let url = 'https://gateway.marvel.com:443/v1/public/characters?apikey=&orderBy=-modified&limit=20';
+    let url = 'https://gateway.marvel.com:443/v1/public/characters?apikey=7ae597c1277cc37f2a4001139b3e2199&orderBy=-modified&limit=20';
     $.get(url).then(
       (res) => {
         res.data.results.forEach(
@@ -59,21 +61,20 @@ class TelaPrincipal {
   }
 
   cadastrarNovoHeroi(heroi) {
-    $.post('/api/herois', heroi).done((res) => {
+    this.herois.cadastrar(heroi).done((res) => {
       console.log('novo id', res.id);
     });
   }
 
   carregarERenderizarHerois(pagina) {
-    return $.get('/api/herois', {
-      pagina: pagina,
-      tamanhoPagina: this.qtdHeroisPorPagina
-    }).done(function (res) {
-      this.qtdTotalRegistros = res.total;
-      this.renderizarHerois(res.dados).then(() => {
-        this.registrarBindsEventos(this);
-      })
-    }.bind(this));
+
+    return this.herois.pegarRegistros(pagina, this.qtdHeroisPorPagina)
+      .done(function (res) {
+        this.qtdTotalRegistros = res.total;
+        this.renderizarHerois(res.dados).then(() => {
+          this.registrarBindsEventos(this);
+        })
+      }.bind(this));
   }
 
   renderizarHerois(heroisServidor) {
