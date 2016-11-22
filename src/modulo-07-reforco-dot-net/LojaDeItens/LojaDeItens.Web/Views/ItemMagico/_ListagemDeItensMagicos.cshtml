@@ -1,0 +1,29 @@
+﻿@model IList<LojaDeItens.Web.Models.ItemMagico.ItemMagicoParaListaViewModel>
+@using LojaDeItens.Web.Models.ItemMagico
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Id</th>
+            <th>Nome</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (ItemMagicoParaListaViewModel item in Model)
+            {
+                <tr>
+                    <td>
+                        @if (item.PodeEditar)
+                        {
+                            @Html.ActionLink("Editar", "Editar", "ItemMagico", new { Id = item.Id })
+                        }
+                    </td>
+                    <td>@item.Id</td>
+                    <td>@item.Nome</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
