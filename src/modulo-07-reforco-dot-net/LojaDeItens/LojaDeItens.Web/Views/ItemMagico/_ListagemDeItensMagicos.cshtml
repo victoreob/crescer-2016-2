@@ -1,7 +1,11 @@
-﻿@model IList<LojaDeItens.Web.Models.ItemMagico.ItemMagicoParaListaViewModel>
+﻿@model LojaDeItens.Web.Models.ItemMagico.ItemMagicoListagemViewModel
 @using LojaDeItens.Web.Models.ItemMagico
 
-<table class="table table-striped">
+@{
+    string ultimaPaginaAttr = Model.UltimaPagina ? "true" : "";
+}
+
+<table class="table table-striped" data-ultima-pagina="@ultimaPaginaAttr" id="@Model.GridId">
     <thead>
         <tr>
             <th>#</th>
@@ -11,7 +15,7 @@
     </thead>
     <tbody>
         @{
-            foreach (ItemMagicoParaListaViewModel item in Model)
+            foreach (ItemMagicoParaListaViewModel item in Model.Itens)
             {
                 <tr>
                     <td>
@@ -27,3 +31,4 @@
         }
     </tbody>
 </table>
+

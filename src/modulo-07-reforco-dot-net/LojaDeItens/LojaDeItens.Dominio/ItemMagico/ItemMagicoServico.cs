@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LojaDeItens.Dominio.Configuracao;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,15 +10,25 @@ namespace LojaDeItens.Dominio.ItemMagico
     public class ItemMagicoServico
     {
         private IItemMagicoRepositorio itemMagicoRepositorio;
+        private IServicoDeConfiguracao servicoDeConfiguracao;
 
-        public ItemMagicoServico(IItemMagicoRepositorio itemMagicoRepositorio)
+        public ItemMagicoServico(IItemMagicoRepositorio itemMagicoRepositorio, IServicoDeConfiguracao servicoDeConfiguracao)
         {
             this.itemMagicoRepositorio = itemMagicoRepositorio;
+            this.servicoDeConfiguracao = servicoDeConfiguracao;
         }
 
-        public IList<ItemMagicoEntidade> BuscarTodos()
+        public IList<ItemMagicoEntidade> BuscarTodos(int pagina)
         {
-            return this.itemMagicoRepositorio.BuscarTodos();
+            int quantidadeDeItensPorPagina = this.servicoDeConfiguracao.QuantidadeDeItensPorPagina;
+
+            var paginacao = new Paginacao()
+            {
+                PaginaDesejada = pagina,
+                QuantidadeDeItensPorPagina = quantidadeDeItensPorPagina
+            };
+
+            return this.itemMagicoRepositorio.BuscarTodos(paginacao);
         }
 
         public IList<ItemMagicoEntidade> BuscarPorRaridade(bool raro)

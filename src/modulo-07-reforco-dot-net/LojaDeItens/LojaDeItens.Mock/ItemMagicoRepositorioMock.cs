@@ -1,4 +1,5 @@
-﻿using LojaDeItens.Dominio.ItemMagico;
+﻿using LojaDeItens.Dominio.Configuracao;
+using LojaDeItens.Dominio.ItemMagico;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,50 @@ namespace LojaDeItens.Mock
                 DataUltimaAtualizacao = DateTime.Now,
                 Descricao = "Gansos feroses!",
                 Raro = false
+            },
+            new ItemMagicoEntidade()
+            {
+                Id = 3,
+                Nome = "Poção de Cura",
+                Preco = 100m,
+                Estoque = 15,
+                DataCriacao = DateTime.Now,
+                DataUltimaAtualizacao = DateTime.Now,
+                Descricao = "Poção que cura 10 de vida!",
+                Raro = false
+            },
+            new ItemMagicoEntidade()
+            {
+                Id = 4,
+                Nome = "Espada de Prata",
+                Preco = 250m,
+                Estoque = 3,
+                DataCriacao = DateTime.Now,
+                DataUltimaAtualizacao = DateTime.Now,
+                Descricao = "Espada para matar lobisomens!",
+                Raro = true
+            },
+            new ItemMagicoEntidade()
+            {
+                Id = 5,
+                Nome = "Arco Mágico",
+                Preco = 800m,
+                Estoque = 2,
+                DataCriacao = DateTime.Now,
+                DataUltimaAtualizacao = DateTime.Now,
+                Descricao = "Arco dos Altos Elfos!",
+                Raro = false
+            },
+            new ItemMagicoEntidade()
+            {
+                Id = 6,
+                Nome = "Espada MotherFucker",
+                Preco = 1000m,
+                Estoque = 1,
+                DataCriacao = DateTime.Now,
+                DataUltimaAtualizacao = DateTime.Now,
+                Descricao = "Espada mega fodásticas!",
+                Raro = true
             }
         };
 
@@ -55,9 +100,11 @@ namespace LojaDeItens.Mock
             return itens.Where(i => i.Raro == raro).ToList();
         }
 
-        public IList<ItemMagicoEntidade> BuscarTodos()
+        public IList<ItemMagicoEntidade> BuscarTodos(Paginacao paginacao)
         {
-            return itens;
+            return itens.Skip(paginacao.PaginaDesejada * paginacao.QuantidadeDeItensPorPagina)
+                        .Take(paginacao.QuantidadeDeItensPorPagina)
+                        .ToList();
         }
 
         public void Criar(ItemMagicoEntidade item)

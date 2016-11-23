@@ -1,4 +1,5 @@
-﻿using LojaDeItens.Dominio.ItemMagico;
+﻿using LojaDeItens.Dominio.Configuracao;
+using LojaDeItens.Dominio.ItemMagico;
 using LojaDeItens.Mock;
 using System;
 using System.Collections.Generic;
@@ -12,8 +13,14 @@ namespace LojaDeItens.Web.Servicos
         public static ItemMagicoServico CriarItemMagicoServico()
         {
             return new ItemMagicoServico(
-                    new ItemMagicoRepositorioMock()
+                    new ItemMagicoRepositorioMock(),
+                    CriarServicoDeConfiguracao()
                 );
+        }
+
+        public static IServicoDeConfiguracao CriarServicoDeConfiguracao()
+        {
+            return new ServicoDeConfiguracaoMock();
         }
     }
 }

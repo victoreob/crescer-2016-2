@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LojaDeItens.Dominio.Configuracao;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,7 @@ namespace LojaDeItens.Dominio.ItemMagico
         void Atualizar(ItemMagicoEntidade item);
         void Criar(ItemMagicoEntidade item);
         ItemMagicoEntidade BuscarPorId(int id);
-        IList<ItemMagicoEntidade> BuscarTodos();
+        IList<ItemMagicoEntidade> BuscarTodos(Paginacao paginacao);
         IList<ItemMagicoEntidade> BuscarPorRaridade(bool raro);
     }
 }

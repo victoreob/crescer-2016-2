@@ -40,12 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuracao\IServicoDeConfiguracao.cs" />
+    <Compile Include="Configuracao\Paginacao.cs" />
     <Compile Include="ItemMagico\IItemMagicoRepositorio.cs" />
     <Compile Include="ItemMagico\ItemMagicoEntidade.cs" />
     <Compile Include="ItemMagico\ItemMagicoException.cs" />
     <Compile Include="ItemMagico\ItemMagicoServico.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

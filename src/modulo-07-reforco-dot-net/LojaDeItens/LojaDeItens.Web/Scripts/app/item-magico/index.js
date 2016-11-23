@@ -54,6 +54,9 @@ itemMagicoIndex.avancarPagina = function () {
 
 itemMagicoIndex.atualizarBotoesDeNavegacao = function () {
     itemMagicoIndex.$btnVoltarPagina.attr('disabled', itemMagicoIndex.paginaAtual === 0);
+
+    var ultimaPagina = !!$('#grid-todos-os-itens').data("ultima-pagina");
+    itemMagicoIndex.$btnAvancarPagina.attr('disabled', ultimaPagina);
 }
 
 itemMagicoIndex.configurarBotoesDeNavegacao = function () {
