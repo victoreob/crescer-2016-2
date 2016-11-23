@@ -87,7 +87,7 @@ namespace LojaDeItens.Mock
 
         public ItemMagicoEntidade BuscarPorId(int id)
         {
-            throw new NotImplementedException();
+            return itens.FirstOrDefault(i => i.Id == id);
         }
 
         public IList<ItemMagicoEntidade> BuscarPorNome(string nome)
@@ -110,6 +110,12 @@ namespace LojaDeItens.Mock
         public void Criar(ItemMagicoEntidade item)
         {
             throw new NotImplementedException();
+        }
+
+        public void Excluir(ItemMagicoEntidade item)
+        {
+            ItemMagicoEntidade itemSalvo = itens.First(i => i.Id == item.Id);
+            itens.Remove(itemSalvo);
         }
     }
 }

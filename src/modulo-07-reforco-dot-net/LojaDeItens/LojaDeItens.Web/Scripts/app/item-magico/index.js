@@ -2,6 +2,18 @@
 
 itemMagicoIndex.paginaAtual = 0;
 
+itemMagicoIndex.excluir = function (id) {
+    $.ajax({
+        url: 'ItemMagico/Excluir/' + id,
+        type: 'POST'
+    })
+    .then(function (resultado) {
+        alert(resultado.Mensagem);
+        itemMagicoIndex.carregarListaDeItens();
+        itemMagicoIndex.carregarItensRaros();
+    });
+}
+
 itemMagicoIndex.carregarListaDeItens = function () {
     $.ajax({
         url: 'ItemMagico/CarregarListaComTodosOsItens',

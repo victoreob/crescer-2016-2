@@ -15,5 +15,7 @@ namespace LojaDeItens.Dominio.ItemMagico
         ItemMagicoEntidade BuscarPorId(int id);
         IList<ItemMagicoEntidade> BuscarTodos(Paginacao paginacao);
         IList<ItemMagicoEntidade> BuscarPorRaridade(bool raro);
+
+        void Excluir(ItemMagicoEntidade item);
     }
 }

@@ -36,6 +36,28 @@ namespace LojaDeItens.Dominio.ItemMagico
             return this.itemMagicoRepositorio.BuscarPorRaridade(raro);
         }
 
+        public ItemMagicoEntidade BuscarPorId(int id)
+        {
+            if(id > 0)
+            {
+                return this.itemMagicoRepositorio.BuscarPorId(id);
+            }
+
+            return null;
+        }
+
+        public void Excluir(int id)
+        {
+            ItemMagicoEntidade item = this.BuscarPorId(id);
+
+            if(item == null)
+            {
+                throw new ItemMagicoException("Item não encontrado.");
+            }
+
+            this.itemMagicoRepositorio.Excluir(item);
+        }
+
         public void Salvar(ItemMagicoEntidade item)
         {
             ValidarItemMagico(item);

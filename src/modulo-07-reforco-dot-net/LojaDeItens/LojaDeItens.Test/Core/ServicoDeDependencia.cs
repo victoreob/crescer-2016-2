@@ -4,11 +4,12 @@ using LojaDeItens.Mock;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace LojaDeItens.Web.Servicos
+namespace LojaDeItens.Test.Core
 {
-    public static class ServicoDeDependencia
+    public class ServicoDeDependencia
     {
         public static ItemMagicoServico CriarItemMagicoServico()
         {
@@ -20,7 +21,7 @@ namespace LojaDeItens.Web.Servicos
 
         public static IServicoDeConfiguracao CriarServicoDeConfiguracao()
         {
-            return new ServicoDeConfiguracao();
+            return new ServicoDeConfiguracaoMock();
         }
     }
 }

@@ -21,8 +21,11 @@
                     <td>
                         @if (item.PodeEditar)
                         {
-                            @Html.ActionLink("Editar", "Editar", "ItemMagico", new { Id = item.Id })
+                            @*<a href="/ItemMagico/Editar?id=1">Editar</a>*@
+                            @Html.ActionLink("Editar", "Editar", "ItemMagico", new { id = item.Id }, null)
                         }
+
+                        <button onclick="itemMagicoIndex.excluir(@item.Id)">Excluir</button>
                     </td>
                     <td>@item.Id</td>
                     <td>@item.Nome</td>

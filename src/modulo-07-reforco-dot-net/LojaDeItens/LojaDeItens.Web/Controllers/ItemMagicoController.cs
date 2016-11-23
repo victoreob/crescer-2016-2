@@ -27,6 +27,34 @@ namespace LojaDeItens.Web.Controllers
             return View();
         }
 
+        public ActionResult Editar(int? id)
+        {
+            ItemParaEdicaoViewModel model = null;
+
+            if (id.HasValue && id.Value > 0)
+            {
+                ItemMagicoEntidade itemMagico = this.itemMagicoServico.BuscarPorId(id.Value);
+                model = new ItemParaEdicaoViewModel(itemMagico);
+            }
+            
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public JsonResult Salvar(ItemParaEdicaoViewModel model)
+        {
+            return Json(new { Mensagem = "Cadastro efetuado com sucesso." }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult Excluir(int id)
+        {
+            this.itemMagicoServico.Excluir(id);
+
+            return Json(new { Mensagem = "Item excluido com sucesso." }, JsonRequestBehavior.AllowGet);
+        }
+
         public PartialViewResult CarregarListaComTodosOsItens(int pagina)
         {
             IList<ItemMagicoEntidade> todosOsItens = this.itemMagicoServico.BuscarTodos(pagina);

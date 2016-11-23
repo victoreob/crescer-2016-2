@@ -154,6 +154,7 @@
     </Compile>
     <Compile Include="Models\ItemMagico\ItemMagicoListagemViewModel.cs" />
     <Compile Include="Models\ItemMagico\ItemMagicoParaListaViewModel.cs" />
+    <Compile Include="Models\ItemMagico\ItemParaEdicaoViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Servicos\ServicoDeConfiguracao.cs" />
     <Compile Include="Servicos\ServicoDeDependencia.cs" />
@@ -167,6 +168,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
+    <Content Include="Scripts\app\item-magico\editar.js" />
     <Content Include="Scripts\app\item-magico\index.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -178,6 +180,8 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -199,6 +203,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\ItemMagico\Index.cshtml" />
     <Content Include="Views\ItemMagico\_ListagemDeItensMagicos.cshtml" />
+    <Content Include="Views\ItemMagico\Editar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
