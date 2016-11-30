@@ -1,7 +1,4 @@
-package br.com.cwi.crescer.aula5;
-
-import br.com.cwi.crescer.aula4.Pessoa;
-import br.com.cwi.crescer.aula4.PessoaBean;
+import br.com.cwi.crescer.aula05.GeneroBean;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -11,43 +8,43 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 /**
- * @author Carlos H. Nonnemacher
+ * @author Victor
  */
 @ManagedBean
 @ViewScoped
-public class Hello {
+public class Genero {
 
     @EJB
-    private PessoaBean pessoaBean;
+    private GeneroBean generoBean;
     
-    private Pessoa pessoa;
-    private List<Pessoa> pessoas;
+    private Genero genero;
+    private List<Genero> generos;
 
     @PostConstruct
     public void init() {
-        this.pessoa = new Pessoa();
-        this.pessoas = pessoaBean.findAll();
-        this.pessoas.sort((a,b)-> a.getIdPessoa().compareTo(b.getIdPessoa()));
+        this.genero = new Genero();
+        this.generos = generoBean.findAll();
+        this.generos.sort((a,b)-> a.getId().compareTo(b.getId()));
     }
 
-    public Pessoa getPessoa() {
-        return pessoa;
+    public Genero getGenero() {
+        return genero;
     }
 
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
+    public void setPessoa(Genero genero) {
+        this.genero = genero;
     }
 
-    public List<Pessoa> getPessoas() {
-        return pessoas;
+    public List<Genero> getGeneros() {
+        return generos;
     }
 
-    public void setPessoas(List<Pessoa> pessoas) {
-        this.pessoas = pessoas;
+    public void setGeneros(List<Genero> generos) {
+        this.generos = generos;
     }
 
     public void adicionar() {
-        pessoaBean.insert(pessoa);
+        generoBean.insert(genero);
         this.init();
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Teste", "teste"));
     }
