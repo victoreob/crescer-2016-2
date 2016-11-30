@@ -1,5 +1,6 @@
 package br.com.cwi.crescer.aula05;
 
+import Entity.Pessoa;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
