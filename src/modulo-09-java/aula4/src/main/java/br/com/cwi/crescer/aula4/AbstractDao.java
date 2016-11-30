@@ -20,24 +20,12 @@ public abstract class AbstractDao<T, ID> implements IDao<T, ID> {
 
     @Override
     public void insert(T t) {
-        try {
-            this.getEntityManager().getTransaction().begin();
-            this.getEntityManager().merge(t);
-            this.getEntityManager().getTransaction().commit();
-        } catch (Exception e) {
-            this.getEntityManager().getTransaction().rollback();
-        }
+        this.getEntityManager().merge(t);
     }
 
     @Override
     public void delete(T t) {
-        try {
-            this.getEntityManager().getTransaction().begin();
-            this.getEntityManager().remove(t);
-            this.getEntityManager().getTransaction().commit();
-        } catch (Exception e) {
-            this.getEntityManager().getTransaction().rollback();
-        }
+        this.getEntityManager().remove(t);
     }
 
     @Override

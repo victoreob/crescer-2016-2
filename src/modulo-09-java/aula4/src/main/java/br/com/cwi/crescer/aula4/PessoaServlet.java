@@ -2,8 +2,6 @@ package br.com.cwi.crescer.aula4;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,29 +18,31 @@ public class PessoaServlet extends HttpServlet {
     @EJB
     private PessoaBean pessoaBean;
 
-    List<String> nomes = new ArrayList<String>();
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         try (final PrintWriter out = response.getWriter();) {
-            out.append("<!DOCTYPE html>");
-            out.append("<html>");
-            out.append("<head>");
-            out.append("<title>Java - aula5</title>");
-            out.append("<meta charset=\"UTF-8\">");
-            out.append("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
-            out.append("</head>");
-            out.append("<body>");
-            out.append("<h1>Pessoa</h1>");
+            out.append("<table class=\"table table-hover\"><thead><tr><th>Nome</th></tr></thead><tbody>");
             
             pessoaBean.findAll().forEach(p-> {
-                out.append("<div>").append(p.getNmPessoa()).append("</div>");
+                out.append("<tr><td>").append(p.getNmPessoa()).append("</td></tr>");
             });
             
-            out.append("</body>");
-            out.append("</html>");
+            out.append("</tbody></table>");
         }
     }
 
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        final String nome = req.getParameter("nome");
+        if (nome != null) {
+            final Pessoa pessoa = new Pessoa();
+            pessoa.setNmPessoa(nome);
+            pessoaBean.insert(pessoa);
+        }
+        resp.sendRedirect("/aula4");
+    }
+
+    
+    
 }
