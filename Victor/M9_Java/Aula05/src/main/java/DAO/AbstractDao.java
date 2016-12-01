@@ -1,6 +1,8 @@
 package DAO;
 
+import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 /**
  * @author Victor
@@ -28,5 +30,8 @@ public abstract class AbstractDao<T, ID> implements IDao<T, ID> {
 
         }
     }
-
+    
+    
+    
+    
 }

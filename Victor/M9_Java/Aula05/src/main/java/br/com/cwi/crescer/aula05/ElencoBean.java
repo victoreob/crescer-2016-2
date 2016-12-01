@@ -1,6 +1,7 @@
 package br.com.cwi.crescer.aula05;
 
 import DAO.AbstractDao;
+import Entity.Elenco;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -10,13 +11,13 @@ import javax.persistence.PersistenceContext;
  * @author Victor
  */
 @Stateless
-public class GeneroBean extends AbstractDao<Genero, Long>{
+public class ElencoBean extends AbstractDao<Elenco, Long>{
 
     @PersistenceContext(unitName = "crescer")
     private EntityManager entityManager;
 
-    public GeneroBean() {
-        super(Genero.class);
+    public ElencoBean() {
+        super(Elenco.class);
     }
 
     @Override
@@ -25,8 +26,8 @@ public class GeneroBean extends AbstractDao<Genero, Long>{
     }
 
     @Override
-    public List<Genero> findAll() {
-        return this.getEntityManager().createQuery("select g from Genero g").getResultList();
+    public List<Elenco> findAll() {
+        return this.getEntityManager().createQuery("select e from ELENCO e").getResultList();
     }
  
 }

@@ -7,19 +7,35 @@
     <h:body>
 
         <ui:composition template="/Templates/template.xhtml">
+       
             <ui:define name="form">
                 <h:panelGrid columns="2">
-                    <h:outputLabel for="nome" value="#{bundle.pessoa_nome}"></h:outputLabel>
-                    <h:inputText id="nome" value="#{hello.pessoa.nome}"/>
+                    <h:outputLabel for="titulo" value="Título"></h:outputLabel>
+                    <h:inputText id="titulo" value="#{filme.filme.titulo}"/>
 
-                    <h:outputLabel for="sobrenome" value="Sobrenome"></h:outputLabel>
-                    <h:inputText id="sobrenome" value="#{hello.pessoa.sobrenome}"/>
+                    <h:outputLabel for="genero" value="Gênero"></h:outputLabel>
+                    <h:selectOneListbox id="sobrenome" value="#{filme.filme.genero}"/>
 
-                    <h:commandButton type="submit" value="Enviar"/>
+                    <h:outputLabel for="diretor" value="#Diretor"></h:outputLabel>
+                    <h:inputText id="diretor" value="#{filme.filme.diretor}"/>
+
+                    <h:outputLabel for="lancamento" value="Data de Lançamento"></h:outputLabel>
+                    <h:inputText id="lancamento" value="#{filme.filme.lancamento}"/>
+
+                    <h:outputLabel for="elenco" value="Elenco"></h:outputLabel>
+                    <h:selectOneListbox id="elenco" value="#{filme.filme.elenco}"/>
+
+                    <h:outputLabel for="classificacao" value="Classificação"></h:outputLabel>
+                    <h:selectOneListbox id="titulo" value="#{filme.filme.classificacao}"/>
+
+                    <h:outputLabel for="idioma" value="#Idioma"></h:outputLabel>
+                    <h:selectOneListbox id="idioma" value="#{filme.filme.idioma}"/>
+
+                    <h:commandButton type="submit" value="Cadastrar"/>
                 </h:panelGrid>
 
                 <h1>
-                    <h:outputText value="#{hello.pessoa}"/>
+                    <h:outputText value="#{filme.filme}"/>
                 </h1>
 
             </ui:define>

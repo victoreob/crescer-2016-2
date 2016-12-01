@@ -8,44 +8,46 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
+
+
 /**
  * @author Carlos H. Nonnemacher
  */
 @ManagedBean
 @ViewScoped
-public class Genero {
+public class Ator {
 
     @EJB
-    private GeneroBean generoBean;
+    private AtorBean atorBean;
     
-    private Genero genero;
-    private List<Genero> generos;
+    private Ator ator;
+    private List<Ator> atores;
 
     @PostConstruct
     public void init() {
-        this.genero = new Genero();
-        this.generos = generoBean.findAll();
+        this.ator = new Ator();
+        this.atores = atorBean.findAll();
         //this.generos.sort((a,b)-> a.getId().compareTo(b.getId()));
     }
 
-    public Genero getGenero() {
-        return genero;
+    public Ator getAtor() {
+        return ator;
     }
 
-    public void setGenero(Genero genero) {
-        this.genero = genero;
+    public void setAtor(Ator ator) {
+        this.ator = ator;
     }
 
-    public List<Genero> getGeneros() {
-        return generos;
+    public List<Ator> getAtores() {
+        return atores;
     }
 
-    public void setGeneros(List<Genero> generos) {
-        this.generos = generos;
+    public void setAtores(List<Ator> atores) {
+        this.atores = atores;
     }
 
     public void adicionar() {
-        generoBean.insert(genero);
+        atorBean.insert(ator);
         this.init();
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Teste", "teste"));
     }
