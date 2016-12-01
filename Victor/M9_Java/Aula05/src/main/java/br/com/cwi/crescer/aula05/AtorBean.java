@@ -1,6 +1,7 @@
 package br.com.cwi.crescer.aula05;
 
 import DAO.AbstractDao;
+import DAO.AbstractDao;
 import Entity.Ator;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -27,7 +28,7 @@ public class AtorBean extends AbstractDao<Ator, Long>{
 
     @Override
     public List<Ator> findAll() {
-        return this.getEntityManager().createQuery("select a from ator a").getResultList();
+        return this.getEntityManager().createQuery("select a from Ator a").getResultList();
     }
  
 }

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:body>
+
+        <ui:composition template="/Templates/template.xhtml">
+
+            <ui:define name="form">
+                <h:panelGrid columns="2">
+                    <h:outputLabel for="nome" value="Nome"></h:outputLabel>
+                    <h:inputText id="nome" value="#{cadastroElenco.elenco.nome}" styleClass="form-control"/>
+
+                    <h:outputLabel for="elenco" value="Elenco"></h:outputLabel>
+                    <h:selectManyListbox id="elenco" value="#{cadastroElenco.elenco.ator}" styleClass="form-control">
+                        <f:selectItems value="#{cadastroAtor.atores}" var="ator"
+                                       itemLabel="#{ator.nome}" itemValue="#{ator.nome}" />
+                    </h:selectManyListbox>
+
+                    <h:commandButton type="submit" value="Cadastrar" styleClass="btn btn-default btn-lg" action="#{cadastroElenco.adicionar}">    
+                        <f:ajax execute="@form" render="@form" />
+                    </h:commandButton>
+                </h:panelGrid>
+
+                <h:dataTable id="elencos" value="#{cadastroElenco.elencos}" var="elenco" styleClass="table table-hover">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="ID"/>
+                        </f:facet>
+                        <h:outputText value="#{elenco.id}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Nome do Elenco"/>
+                        </f:facet>
+                        <h:outputText value="#{elenco.nome}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Atores"/>
+                        </f:facet>
+                        <h:outputText value="#{elenco.ator}"/>
+                    </h:column>
+
+                </h:dataTable>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

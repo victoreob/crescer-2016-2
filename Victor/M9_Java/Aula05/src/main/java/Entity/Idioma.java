@@ -35,19 +35,6 @@ public class Idioma implements Serializable {
     @Basic(optional = false)
     @Column(name = "NOME")
     private String nome;
-    
-    @ManyToOne
-    @Basic(optional = true)
-    @Column(name = "FILME")
-    private Filme filme;
-
-    public Filme getFilme() {
-        return filme;
-    }
-
-    public void setFilme(Filme filme) {
-        this.filme = filme;
-    }
 
     public Long getId() {
         return id;

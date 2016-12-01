@@ -1,6 +1,7 @@
 package br.com.cwi.crescer.aula05;
 
 import DAO.AbstractDao;
+import Entity.Genero;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

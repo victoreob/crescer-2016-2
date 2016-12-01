@@ -27,7 +27,7 @@ public class FilmeBean extends AbstractDao<Filme, Long>{
 
     @Override
     public List<Filme> findAll() {
-        return this.getEntityManager().createQuery("select f from FILME f").getResultList();
+        return this.getEntityManager().createQuery("select f from Filme f").getResultList();
     }
  
 }

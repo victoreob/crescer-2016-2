@@ -2,41 +2,105 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
 
     <h:body>
 
         <ui:composition template="/Templates/template.xhtml">
-       
+
             <ui:define name="form">
                 <h:panelGrid columns="2">
                     <h:outputLabel for="titulo" value="Título"></h:outputLabel>
-                    <h:inputText id="titulo" value="#{filme.filme.titulo}"/>
+                    <h:inputText id="titulo" value="#{cadastroFilme.filme.titulo}" styleClass="table table-hover"/>
 
                     <h:outputLabel for="genero" value="Gênero"></h:outputLabel>
-                    <h:selectOneListbox id="sobrenome" value="#{filme.filme.genero}"/>
+                    <h:selectManyListbox id="genero" value="#{cadastroFilme.filme.genero}" styleClass="table table-hover">
+                        <f:selectItems value="#{cadastroGenero.generos}" var="genero"
+                                       itemLabel="#{genero.nome}" itemValue="#{genero.nome}" />
+                    </h:selectManyListbox>
 
-                    <h:outputLabel for="diretor" value="#Diretor"></h:outputLabel>
-                    <h:inputText id="diretor" value="#{filme.filme.diretor}"/>
+                    <h:outputLabel for="diretor" value="Diretor"></h:outputLabel>
+                    <h:inputText id="diretor" value="#{cadastroFilme.filme.diretor}" styleClass="table table-hover"/>
 
                     <h:outputLabel for="lancamento" value="Data de Lançamento"></h:outputLabel>
-                    <h:inputText id="lancamento" value="#{filme.filme.lancamento}"/>
+                    <h:inputText id="lancamento" value="#{cadastroFilme.filme.lancamento}" styleClass="table table-hover"/>
 
                     <h:outputLabel for="elenco" value="Elenco"></h:outputLabel>
-                    <h:selectOneListbox id="elenco" value="#{filme.filme.elenco}"/>
+                    <h:selectManyListbox id="elenco" value="#{cadastroFilme.filme.elenco}" styleClass="table table-hover">
+                        <f:selectItems value="#{cadastroElenco.elencos}" var="elenco"
+                                       itemLabel="#{elenco.nome}" itemValue="#{elenco.nome}" />
+                    </h:selectManyListbox>
 
                     <h:outputLabel for="classificacao" value="Classificação"></h:outputLabel>
-                    <h:selectOneListbox id="titulo" value="#{filme.filme.classificacao}"/>
+                    <h:selectManyListbox id="classificacao" value="#{cadastroFilme.filme.classificacao}" styleClass="table table-hover">
+                        <f:selectItems value="#{cadastroClassificacao.classificacoes}" var="classificacao"
+                                       itemLabel="#{classificacao.descricao}" itemValue="#{classificacao.descricao}" />
+                    </h:selectManyListbox>
 
-                    <h:outputLabel for="idioma" value="#Idioma"></h:outputLabel>
-                    <h:selectOneListbox id="idioma" value="#{filme.filme.idioma}"/>
+                    <h:outputLabel for="idioma" value="Idioma"></h:outputLabel>
+                    <h:selectManyListbox id="idioma" value="#{cadastroFilme.filme.idioma}" styleClass="table table-hover">
+                        <f:selectItems value="#{cadastroIdioma.idiomas}" var="idioma"
+                                       itemLabel="#{idioma.nome}" itemValue="#{idioma.nome}" />
+                    </h:selectManyListbox>
 
-                    <h:commandButton type="submit" value="Cadastrar"/>
+                    <h:commandButton type="submit" value="Cadastrar" styleClass="btn btn-default btn-lg" action="#{cadastroFilme.adicionar}">    
+                        <f:ajax execute="@form" render="@form" />
+                    </h:commandButton>
                 </h:panelGrid>
 
-                <h1>
-                    <h:outputText value="#{filme.filme}"/>
-                </h1>
+               <h:dataTable id="filmes" value="#{cadastroFilme.filmes}" var="filme" styleClass="table table-hover">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="ID"/>
+                        </f:facet>
+                        <h:outputText value="#{filme.id}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Título"/>
+                        </f:facet>
+                        <h:outputText value="#{filme.titulo}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Gênero"/>
+                        </f:facet>
+                        <h:outputText value="#{filme.genero}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Diretor"/>
+                        </f:facet>
+                        <h:outputText value="#{filme.diretor}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Data de Lançamento"/>
+                        </f:facet>
+                        <h:outputText value="#{filme.lancamento}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Elenco"/>
+                        </f:facet>
+                        <h:outputText value="#{filme.elenco}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Classificação"/>
+                        </f:facet>
+                        <h:outputText value="#{filme.classificacao}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Idioma"/>
+                        </f:facet>
+                        <h:outputText value="#{filme.idioma}"/>
+                    </h:column>
+
+                </h:dataTable>.
+
 
             </ui:define>
         </ui:composition>

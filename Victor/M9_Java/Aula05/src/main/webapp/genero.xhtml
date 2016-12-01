@@ -5,20 +5,35 @@
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:ui="http://java.sun.com/jsf/facelets"
 
-    template="/templates/template.xhtml">
+    template="/Templates/template.xhtml"
+    xmlns:f="http://java.sun.com/jsf/core">
 
     <ui:define name="form">
 
         <div class="form-group">
-            <h:outputLabel for="nome" value="#{genero.genero.nome}"></h:outputLabel>
-            <h:inputText id="nome" value="#{genero.genero.nome}" styleClass="form-control"/>
+            <h:outputLabel for="nome" value="Nome"></h:outputLabel>
+            <h:inputText id="nome" value="#{cadastroGenero.genero.nome}" styleClass="form-control"/>
         </div>
 
-        <h:commandButton type="submit" value="Cadastrar" styleClass="btn btn-default btn-lg"/>    
+        <h:commandButton type="submit" value="Cadastrar" styleClass="btn btn-default btn-lg" action="#{cadastroGenero.adicionar}">    
+        <f:ajax execute="@form" render="@form" />
+        </h:commandButton>
+        
+        <h:dataTable id="generos" value="#{cadastroGenero.generos}" var="genero" styleClass="table table-hover">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="ID"/>
+                </f:facet>
+                <h:outputText value="#{genero.id}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Gênero"/>
+                </f:facet>
+                <h:outputText value="#{genero.nome}"/>
+            </h:column>
 
-        <h:panelGrid>
-            <h:outputText value="#{hello.generos}"/>
-        </h:panelGrid>
+        </h:dataTable>
 
     </ui:define>
 

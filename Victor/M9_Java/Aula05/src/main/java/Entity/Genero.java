@@ -7,6 +7,7 @@ package Entity;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
+import static javax.persistence.CascadeType.ALL;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,19 +36,6 @@ public class Genero implements Serializable{
     @Basic(optional = false)
     @Column(name = "NOME")
     private String nome;
-    
-    @ManyToOne
-    @Basic(optional = true)
-    @Column(name = "FILME")
-    private Filme filme;
-
-    public Filme getFilme() {
-        return filme;
-    }
-
-    public void setFilme(Filme filme) {
-        this.filme = filme;
-    }
 
     public Long getId() {
         return id;

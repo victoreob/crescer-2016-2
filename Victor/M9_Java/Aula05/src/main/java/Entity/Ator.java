@@ -30,23 +30,10 @@ public class Ator implements Serializable{
     @Basic(optional = false)
     @Column(name = "ID_ATOR")
     private Long id;
-
-    public Elenco getElenco() {
-        return elenco;
-    }
-
-    public void setElenco(Elenco elenco) {
-        this.elenco = elenco;
-    }
-    
+ 
     @Basic(optional = false)
     @Column(name = "NOME")
     private String nome;
-
-    @ManyToOne
-    @Basic(optional = true)
-    @Column(name = "ELENCO")
-    private Elenco elenco;
     
     public Long getId() {
         return id;

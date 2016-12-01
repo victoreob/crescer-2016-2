@@ -32,14 +32,39 @@ public class Elenco implements Serializable {
     @Basic(optional = false)
     @Column(name = "ID_ELENCO")
     private Long id;
+ 
+    @Basic(optional = false)
+    @Column(name = "NOME_ELENCO")
+    private String nome;
     
-    @OneToMany
+    @ManyToOne
     @Basic(optional = false)
     @Column(name = "ATOR")
     private List<Ator> ator;
-    
-    @ManyToOne
-    @Basic(optional = true)
-    @Column(name = "FILME")
-    private Filme filme;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public List<Ator> getAtor() {
+        return ator;
+    }
+
+    public void setAtor(List<Ator> ator) {
+        this.ator = ator;
+    }
+  
+
 }

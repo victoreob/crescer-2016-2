@@ -27,7 +27,8 @@ public class ClassificacaoBean extends AbstractDao<Classificacao, Long>{
 
     @Override
     public List<Classificacao> findAll() {
-        return this.getEntityManager().createQuery("select c from CLASSIFICACAO c").getResultList();
+        return this.getEntityManager().createQuery("select c from Classificacao c").getResultList();
     }
+    
  
 }

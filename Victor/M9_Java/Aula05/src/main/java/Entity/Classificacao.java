@@ -21,14 +21,14 @@ import javax.persistence.Table;
  * @author victor.eduardo
  */
 @Entity
-@Table(name = "CLASSIFICAO")
+@Table(name = "CLASSIFICACAO")
 public class Classificacao implements Serializable {
 
     @Id
     @GeneratedValue(strategy = SEQUENCE, generator = "SEQ_CLASSIFICACAO")
     @SequenceGenerator(name = "SEQ_CLASSIFICACAO", sequenceName = "SEQ_CLASSIFICACAO", allocationSize = 1)
     @Basic(optional = false)
-    @Column(name = "ID_PESSOA")
+    @Column(name = "ID_CLASSIFICACAO")
     private Long id;
 
     @Basic(optional = false)
@@ -38,11 +38,6 @@ public class Classificacao implements Serializable {
     @Basic(optional = false)
     @Column(name = "IDADE")
     private Long idade;
-    
-    @ManyToOne
-    @Basic(optional = true)
-    @Column(name = "FILME")
-    private Filme filme;
 
     public Long getId() {
         return id;
@@ -67,13 +62,4 @@ public class Classificacao implements Serializable {
     public void setIdade(Long idade) {
         this.idade = idade;
     }
-
-    public Filme getFilme() {
-        return filme;
-    }
-
-    public void setFilme(Filme filme) {
-        this.filme = filme;
-    }
-
 }

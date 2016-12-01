@@ -7,63 +7,63 @@ package Entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
+import static javax.persistence.CascadeType.ALL;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.SEQUENCE;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import static javax.persistence.TemporalType.DATE;
 
 /**
  *
  * @author victor.eduardo
  */
-
 @Entity
-@Table(name="FILME")
-public class Filme implements Serializable{
-    
+@Table(name = "FILME")
+public class Filme implements Serializable {
+
     @Id
     @GeneratedValue(strategy = SEQUENCE, generator = "SEQ_FILME")
-    @SequenceGenerator(name = "SEQ_FILME", sequenceName = "SEQ_FILME", allocationSize = 1) 
+    @SequenceGenerator(name = "SEQ_FILME", sequenceName = "SEQ_FILME", allocationSize = 1)
     @Basic(optional = false)
     @Column(name = "ID_FILME")
     private Long id;
-    
+
     @Basic(optional = false)
     @Column(name = "TITULO")
     private String titulo;
-    
-    @OneToMany
+
+    @ManyToOne
     @Basic(optional = false)
-    @Column(name = "GENERO")
-    private Genero genero;
-    
+    private List<Genero> genero;
+
     @Basic(optional = false)
     @Column(name = "DIRETOR")
     private String diretor;
-    
-    @Basic(optional = true)
+
+    @Basic(optional = false)
     @Column(name = "DATA_LANCAMENTO")
-    private Date lancamento;
-    
-    @OneToMany
+    private String lancamento;
+
+    @ManyToOne
     @Basic(optional = false)
-    @Column(name = "ELENCO")
-    private Elenco elenco;
-    
-    @OneToMany
+    private List<Elenco> elenco;
+
+    @ManyToOne
     @Basic(optional = false)
-    @Column(name = "CLASSIFICACAO")
-    private Classificacao classificacao;
-    
-    @OneToMany
+    private List<Classificacao> classificacao;
+
+    @ManyToOne
     @Basic(optional = false)
-    @Column(name = "IDIOMA")
-    private Idioma idioma;
+    private List<Idioma> idioma;
 
     public Long getId() {
         return id;
@@ -81,11 +81,11 @@ public class Filme implements Serializable{
         this.titulo = titulo;
     }
 
-    public Genero getGenero() {
+    public List<Genero> getGenero() {
         return genero;
     }
 
-    public void setGenero(Genero genero) {
+    public void setGenero(List<Genero> genero) {
         this.genero = genero;
     }
 
@@ -97,37 +97,38 @@ public class Filme implements Serializable{
         this.diretor = diretor;
     }
 
-    public Date getLancamento() {
+    public String getLancamento() {
         return lancamento;
     }
 
-    public void setLancamento(Date lancamento) {
+    public void setLancamento(String lancamento) {
         this.lancamento = lancamento;
     }
 
-    public Elenco getElenco() {
+    public List<Elenco> getElenco() {
         return elenco;
     }
 
-    public void setElenco(Elenco elenco) {
+    public void setElenco(List<Elenco> elenco) {
         this.elenco = elenco;
     }
 
-    public Classificacao getClassificacao() {
+    public List<Classificacao> getClassificacao() {
         return classificacao;
     }
 
-    public void setClassificacao(Classificacao classificacao) {
+    public void setClassificacao(List<Classificacao> classificacao) {
         this.classificacao = classificacao;
     }
 
-    public Idioma getIdioma() {
+    public List<Idioma> getIdioma() {
         return idioma;
     }
 
-    public void setIdioma(Idioma idioma) {
+    public void setIdioma(List<Idioma> idioma) {
         this.idioma = idioma;
     }
+
     
     
-}
+    }

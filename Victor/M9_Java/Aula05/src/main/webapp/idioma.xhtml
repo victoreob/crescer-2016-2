@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:body>
+
+        <ui:composition template="/Templates/template.xhtml">
+
+            <ui:define name="form">
+                <h:panelGrid columns="2">
+                    <h:outputLabel for="nome" value="Idioma"></h:outputLabel>
+                    <h:inputText id="nome" value="#{cadastroIdioma.idioma.nome}" styleClass="form-control"/>
+
+                    <h:commandButton type="submit" value="Cadastrar" styleClass="btn btn-default btn-lg" action="#{cadastroIdioma.adicionar()}">    
+                        <f:ajax execute="@form" render="@form" />
+                    </h:commandButton>
+                </h:panelGrid>
+
+                <h:dataTable id="idiomas" value="#{cadastroIdioma.idiomas}" var="idioma" styleClass="table table-hover">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="ID"/>
+                        </f:facet>
+                        <h:outputText value="#{idioma.id}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Idioma"/>
+                        </f:facet>
+                        <h:outputText value="#{idioma.nome}"/>
+                    </h:column>
+
+                </h:dataTable>
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
