@@ -1,5 +1,6 @@
 package br.com.cwi.crescer.aula05;
 
+import Entity.Classificacao;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -9,11 +10,11 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 /**
- * @author Carlos H. Nonnemacher
+ * @author Victor
  */
 @ManagedBean
 @ViewScoped
-public class Classificacao {
+public class CadastroClassificacao {
 
     @EJB
     private ClassificacaoBean classificacaoBean;
@@ -25,7 +26,7 @@ public class Classificacao {
     public void init() {
         this.classificacao = new Classificacao();
         this.classificacoes = classificacaoBean.findAll();
-        //this.generos.sort((a,b)-> a.getId().compareTo(b.getId()));
+        //this.classificacao.sort((a,b)-> a.getId().compareTo(b.getId()));
     }
 
     public Classificacao getClassificacao() {

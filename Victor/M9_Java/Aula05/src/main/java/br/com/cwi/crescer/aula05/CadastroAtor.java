@@ -1,5 +1,6 @@
 package br.com.cwi.crescer.aula05;
 
+import Entity.Ator;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -9,13 +10,12 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 
-
 /**
- * @author Carlos H. Nonnemacher
+ * @author Victor
  */
 @ManagedBean
 @ViewScoped
-public class Ator {
+public class CadastroAtor {
 
     @EJB
     private AtorBean atorBean;
@@ -27,7 +27,7 @@ public class Ator {
     public void init() {
         this.ator = new Ator();
         this.atores = atorBean.findAll();
-        //this.generos.sort((a,b)-> a.getId().compareTo(b.getId()));
+        this.atores.sort((a,b)-> a.getId().compareTo(b.getId()));
     }
 
     public Ator getAtor() {
