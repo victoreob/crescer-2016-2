@@ -75,9 +75,17 @@
                 </table>
             </form>
 
+            
+            <div class="alert alert-success" th:if="${msg}">
+                <strong>Sucess!</strong> <span th:text="${msg}"></span>
+            </div>
+                
+
             <div th:replace="fragments :: paginator(${pessoas}, '/pessoa')">
 
             </div>
+
+
 
             <!--
                             <ul th:if="${not #lists.isEmpty(pessoas)}" class="pagination">

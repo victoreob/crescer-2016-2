@@ -14,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  * @author Carlos H. Nonnemacher
@@ -43,11 +44,12 @@ public class PessoaController {
     }
     
     @RequestMapping(method = RequestMethod.POST)
-    public String save(@Valid Pessoa pessoa, BindingResult bindingResult) {
+    public String save(@Valid Pessoa pessoa, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         if (!bindingResult.hasErrors()) {
             if (pessoa.getNascimento() == null) {
                 pessoa.setNascimento(new Date());
             }
+            redirectAttributes.addFlashAttribute("msg", "Registro salvo com sucesso!");
             service.save(pessoa);
             return "redirect:pessoa";
         }
