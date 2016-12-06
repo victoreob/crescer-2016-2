@@ -32,6 +32,7 @@ public class Example {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     String toIndex(Model model, @RequestParam(required = false) String name) {
         model.addAttribute("name", name == null ? "Victor Eduardo Bittencourt" : name);
+        model.addAttribute("nascimento", new Date());
         return "index";
     }
 
