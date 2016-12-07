@@ -8,6 +8,7 @@ package br.com.cwi.crescer.moviesign.Entity;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import static javax.persistence.CascadeType.ALL;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -36,9 +37,7 @@ public class Elenco implements Serializable {
     @Column(name = "NOME_ELENCO")
     private String nome;
     
-    @OneToMany
-    @Basic(optional = false)
-    @Column(name = "ATOR")
+    @OneToMany(cascade = ALL)
     private List<Ator> ator;
 
     public Long getId() {

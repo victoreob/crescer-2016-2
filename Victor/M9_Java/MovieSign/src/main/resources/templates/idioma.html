@@ -4,7 +4,7 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html>
-    <head th:replace="fragments :: head('Cadastro de Pessoas')">
+    <head th:replace="fragments :: head('Cadastro de Idiomas')">
         <!-- pega do templates/fragments.html o frament:head -->    
     </head>
     <body>
@@ -15,9 +15,9 @@ and open the template in the editor.
 
         <div class="container">
 
-            <h1 th:text="#{ator.form}" class="page-header"></h1>
+            <h1 th:text="#{idioma.form}" class="page-header"></h1>
 
-            <form action="#" th:action="@{/ator}" th:object="${ator}" method="POST">
+            <form action="#" th:action="@{/idioma}" th:object="${idioma}" method="POST">
 
                 <input type="hidden" th:field="*{id}"/> 
 
@@ -36,17 +36,17 @@ and open the template in the editor.
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th th:text="#{ator.id}" />
-                            <th th:text="#{ator.nome}" />
+                            <th th:text="#{idioma.id}" />
+                            <th th:text="#{idioma.nome}" />
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="a : ${atores}">
-                            <td th:text="${a.id}">ID</td>
-                            <td th:text="${a.nome}">NOME</td>
+                        <tr th:each="i : ${idiomas}">
+                            <td th:text="${i.id}">ID</td>
+                            <td th:text="${i.nome}">NOME</td>
                             <td>
-                                <a th:href="@{${'/ator'}(id=${a.id})}" class="btn btn-default btn-xs">Editar</a>
+                                <a th:href="@{${'/idioma'}(id=${i.id})}" class="btn btn-default btn-xs">Editar</a>
                             </td>
                         </tr>
                     </tbody>
@@ -60,7 +60,7 @@ and open the template in the editor.
             </div>
 
 
-            <div th:replace="fragments :: paginator(${atores}, '/ator')">
+            <div th:replace="fragments :: paginator(${idiomas}, '/idioma')">
 
             </div>
         </div>

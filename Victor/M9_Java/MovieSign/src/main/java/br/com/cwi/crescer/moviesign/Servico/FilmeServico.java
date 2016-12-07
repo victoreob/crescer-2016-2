@@ -13,6 +13,8 @@ import br.com.cwi.crescer.moviesign.Repositorio.FilmeRepositorio;
 import br.com.cwi.crescer.moviesign.Repositorio.GeneroRepositorio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 /**
@@ -29,7 +31,19 @@ public class FilmeServico {
         return (List<Filme>) filmeRepositorio.findAll();
     }
 
+    public Page<Filme> findAll(Pageable pgbl) {
+        return filmeRepositorio.findAll(pgbl);
+    }
+
+    public Iterable<Filme> findAll() {
+        return filmeRepositorio.findAll();
+    }
+
     public void adicionar(Filme filme) {
         filmeRepositorio.save(filme);
+    }
+
+    public Filme findOne(Long id) {
+        return filmeRepositorio.findOne(id);
     }
 }

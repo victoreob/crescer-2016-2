@@ -7,11 +7,12 @@ package br.com.cwi.crescer.moviesign.Repositorio;
 
 import br.com.cwi.crescer.moviesign.Entity.Usuario;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**
  *
  * @author Victor Bittencourt
  */
-public interface UsuarioRepositorio extends CrudRepository<Usuario, Long>{
+public interface UsuarioRepositorio extends CrudRepository<Usuario, Long>, PagingAndSortingRepository<Usuario, Long>{
     
 }

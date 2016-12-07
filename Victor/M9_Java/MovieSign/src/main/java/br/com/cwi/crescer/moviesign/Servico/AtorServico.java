@@ -26,7 +26,7 @@ public class AtorServico {
     public List<Ator> listAll() {
         return (List<Ator>) atorRepositorio.findAll();
     }
-
+    
     public Page<Ator> findAll(Pageable pgbl) {
         return atorRepositorio.findAll(pgbl);
     }

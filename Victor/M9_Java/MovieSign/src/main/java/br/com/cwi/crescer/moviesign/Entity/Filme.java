@@ -17,6 +17,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -45,6 +46,7 @@ public class Filme implements Serializable {
     @Column(name = "DIRETOR")
     private String diretor;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Basic(optional = false)
     @Column(name = "DATA_LANCAMENTO")
     @Temporal(javax.persistence.TemporalType.DATE)

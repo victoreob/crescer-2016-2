@@ -1,0 +1,77 @@
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head th:replace="fragments :: head('Cadastro de Classificação')">
+        <!-- pega do templates/fragments.html o frament:head -->    
+    </head>
+    <body>
+
+        <div th:replace="fragments :: navbar">
+            <!-- pega do templates/fragments.html o frament:navbar -->
+        </div>
+
+        <div class="container">
+
+            <h1 th:text="#{classificacao.form}" class="page-header"></h1>
+
+            <form action="#" th:action="@{/classificacao}" th:object="${classificacao}" method="POST">
+
+                <input type="hidden" th:field="*{id}"/> 
+
+                <div class="form-group" th:classappend="${#fields.hasErrors('idade')} ? has-error">
+                    <label for="nome" th:text="#{classificacao.idade}"></label>
+                    <input class="form-control" type="text" th:field="*{idade}" autofocus="true" />
+                    <span th:if="${#fields.hasErrors('idade')}" th:errors="*{idade}" class="help-block"></span>
+                </div>
+
+                <div class="form-group" th:classappend="${#fields.hasErrors('descricao')} ? has-error">
+                    <label for="nome" th:text="#{classificacao.descricao}"></label>
+                    <input class="form-control" type="text" th:field="*{descricao}" autofocus="true" />
+                    <span th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}" class="help-block"></span>
+                </div>
+
+                <div class="form-group">
+                    <input class="btn btn-success" type="submit" th:value="#{form.submit}" />
+                    <input class="btn btn-primary" type="reset" th:value="#{form.reset}" />
+                </div>
+
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th th:text="#{classificacao.id}" />
+                            <th th:text="#{classificacao.idade}" />
+                            <th th:text="#{classificacao.descricao}" />
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="c : ${classificacoes}">
+                            <td th:text="${c.id}"></td>
+                            <td th:text="${c.idade}"></td>
+                            <td th:text="${c.descricao}"></td>
+                            <td>
+                                <a th:href="@{${'/classificacao'}(id=${c.id})}" class="btn btn-default btn-xs">Editar</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+            </form>
+
+            <div class="alert alert-success" th:if="${msg}">
+                <strong>Sucess!</strong> <span th:text="${msg}"></span>
+            </div>
+
+
+            <div th:replace="fragments :: paginator(${classificacoes}, '/classificacao')">
+
+            </div>
+        </div>
+
+    </body>
+</html>

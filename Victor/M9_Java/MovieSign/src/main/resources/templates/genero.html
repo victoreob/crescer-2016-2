@@ -17,12 +17,12 @@ and open the template in the editor.
 
             <h1 th:text="#{genero.form}" class="page-header"></h1>
 
-            <form action="#" th:action="@{/ator}" th:object="${ator}" method="POST">
+            <form action="#" th:action="@{/genero}" th:object="${genero}" method="POST">
 
                 <input type="hidden" th:field="*{id}"/> 
 
                 <div class="form-group" th:classappend="${#fields.hasErrors('nome')} ? has-error">
-                    <label for="nome" th:text="Nome"></label>
+                    <label for="nome" th:text="#{genero.nome}"></label>
                     <input class="form-control" type="text" th:field="*{nome}" autofocus="true" />
                     <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" class="help-block"></span>
                 </div>
@@ -36,17 +36,17 @@ and open the template in the editor.
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th th:text="#{ator.id}" />
-                            <th th:text="#{ator.nome}" />
+                            <th th:text="#{genero.id}" />
+                            <th th:text="#{genero.nome}" />
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="a : ${atores}">
-                            <td th:text="${a.id}">ID</td>
-                            <td th:text="${a.nome}">NOME</td>
+                        <tr th:each="g : ${generos}">
+                            <td th:text="${g.id}">ID</td>
+                            <td th:text="${g.nome}">NOME</td>
                             <td>
-                                <a th:href="@{${'/ator'}(id=${a.id})}" class="btn btn-default btn-xs">Editar</a>
+                                <a th:href="@{${'/genero'}(id=${g.id})}" class="btn btn-default btn-xs">Editar</a>
                             </td>
                         </tr>
                     </tbody>
@@ -54,6 +54,15 @@ and open the template in the editor.
 
 
             </form>
+
+            <div class="alert alert-success" th:if="${msg}">
+                <strong>Sucess!</strong> <span th:text="${msg}"></span>
+            </div>
+
+
+            <div th:replace="fragments :: paginator(${generos}, '/genero')">
+
+            </div>
         </div>
 
     </body>

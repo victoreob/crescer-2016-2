@@ -5,10 +5,13 @@
  */
 package br.com.cwi.crescer.moviesign.Servico;
 
+import br.com.cwi.crescer.moviesign.Entity.Ator;
 import br.com.cwi.crescer.moviesign.Entity.Idioma;
 import br.com.cwi.crescer.moviesign.Repositorio.IdiomaRepositorio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 /**
@@ -25,7 +28,19 @@ public class IdiomaServico {
         return (List<Idioma>) idiomaRepositorio.findAll();
     }
 
+    public Page<Idioma> findAll(Pageable pgbl) {
+        return idiomaRepositorio.findAll(pgbl);
+    }
+
+    public Iterable<Idioma> findAll() {
+        return idiomaRepositorio.findAll();
+    }
+
     public void adicionar(Idioma idioma) {
         idiomaRepositorio.save(idioma);
+    }
+
+    public Idioma findOne(Long id) {
+        return idiomaRepositorio.findOne(id);
     }
 }

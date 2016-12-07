@@ -9,6 +9,8 @@ import br.com.cwi.crescer.moviesign.Entity.Classificacao;
 import br.com.cwi.crescer.moviesign.Repositorio.ClassificacaoRepositorio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 /**
@@ -27,5 +29,18 @@ public class ClassificacaoServico {
 
     public void adicionar(Classificacao classificacao) {
         classificacaoRepositorio.save(classificacao);
+    }
+    
+      public Page<Classificacao> findAll(Pageable pgbl) {
+        return classificacaoRepositorio.findAll(pgbl);
+    }
+
+    public Iterable<Classificacao> findAll() {
+        return classificacaoRepositorio.findAll();
+    }
+    
+    
+    public Classificacao findOne(Long id) {
+        return classificacaoRepositorio.findOne(id);
     }
 }

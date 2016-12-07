@@ -8,11 +8,12 @@ package br.com.cwi.crescer.moviesign.Repositorio;
 import br.com.cwi.crescer.moviesign.Entity.Ator;
 import br.com.cwi.crescer.moviesign.Entity.Classificacao;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**
  *
  * @author Victor Bittencourt
  */
-public interface ClassificacaoRepositorio extends CrudRepository<Classificacao, Long>{
+public interface ClassificacaoRepositorio extends CrudRepository<Classificacao, Long>, PagingAndSortingRepository<Classificacao, Long>{
     
 }

@@ -4,7 +4,7 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html>
-    <head th:replace="fragments :: head('Cadastro de Pessoas')">
+    <head th:replace="fragments :: head('Cadastro de Elencos')">
         <!-- pega do templates/fragments.html o frament:head -->    
     </head>
     <body>
@@ -15,16 +15,24 @@ and open the template in the editor.
 
         <div class="container">
 
-            <h1 th:text="#{ator.form}" class="page-header"></h1>
+            <h1 th:text="#{elenco.form}" class="page-header"></h1>
 
-            <form action="#" th:action="@{/ator}" th:object="${ator}" method="POST">
+            <form action="#" th:action="@{/elenco}" th:object="${elenco}" method="POST">
 
                 <input type="hidden" th:field="*{id}"/> 
 
                 <div class="form-group" th:classappend="${#fields.hasErrors('nome')} ? has-error">
-                    <label for="nome" th:text="Nome"></label>
+                    <label for="nome" th:text="#{elenco.nome}"></label>
                     <input class="form-control" type="text" th:field="*{nome}" autofocus="true" />
                     <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" class="help-block"></span>
+                </div>
+
+                <div class="form-group" th:classappend="${#fields.hasErrors('ator')} ? has-error">
+                    <label for="ator" th:text="#{elenco.ator}"></label>
+                    <select class="form-control" th:field="*{ator}" multiple="multiple">
+                        <option th:each="a : ${atores}" th:value="${a.id}" th:text="${a.nome}"/>
+                    </select>
+                    <span th:if="${#fields.hasErrors('ator')}" th:errors="*{ator}" class="help-block"></span>
                 </div>
 
                 <div class="form-group">
@@ -36,17 +44,23 @@ and open the template in the editor.
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th th:text="#{ator.id}" />
-                            <th th:text="#{ator.nome}" />
+                            <th th:text="#{elenco.id}" />
+                            <th th:text="#{elenco.nome}" />
+                            <th th:text="#{elenco.ator}" />
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="a : ${atores}">
-                            <td th:text="${a.id}">ID</td>
-                            <td th:text="${a.nome}">NOME</td>
+                        <tr th:each="e : ${elencos}">
+                            <td th:text="${e.id}"></td>
+                            <td th:text="${e.nome}"></td>
                             <td>
-                                <a th:href="@{${'/ator'}(id=${a.id})}" class="btn btn-default btn-xs">Editar</a>
+                                <ul th:each="ator:${e.ator}">
+                                    <li th:text="${ator.nome}"></li>
+                                </ul>
+                            </td>
+                            <td>
+                                <a th:href="@{${'/elenco'}(id=${e.id})}" class="btn btn-default btn-xs">Editar</a>
                             </td>
                         </tr>
                     </tbody>
@@ -60,7 +74,7 @@ and open the template in the editor.
             </div>
 
 
-            <div th:replace="fragments :: paginator(${atores}, '/ator')">
+            <div th:replace="fragments :: paginator(${elencos}, '/elenco')">
 
             </div>
         </div>

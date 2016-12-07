@@ -7,11 +7,12 @@ package br.com.cwi.crescer.moviesign.Repositorio;
 
 import br.com.cwi.crescer.moviesign.Entity.Idioma;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**
  *
  * @author Victor Bittencourt
  */
-public interface IdiomaRepositorio extends CrudRepository<Idioma, Long>{
+public interface IdiomaRepositorio extends CrudRepository<Idioma, Long>, PagingAndSortingRepository<Idioma, Long>{
     
 }

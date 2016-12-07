@@ -1,0 +1,125 @@
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head th:replace="fragments :: head('Cadastro de Filmes')">
+        <!-- pega do templates/fragments.html o frament:head -->    
+    </head>
+    <body>
+
+        <div th:replace="fragments :: navbar">
+            <!-- pega do templates/fragments.html o frament:navbar -->
+        </div>
+
+        <div class="container">
+
+            <h1 th:text="#{filme.form}" class="page-header"></h1>
+
+            <form action="#" th:action="@{/filme}" th:object="${filme}" method="POST">
+
+                <input type="hidden" th:field="*{id}"/> 
+
+                <div class="form-group" th:classappend="${#fields.hasErrors('titulo')} ? has-error">
+                    <label for="titulo" th:text="#{filme.titulo}"></label>
+                    <input class="form-control" type="text" th:field="*{titulo}" autofocus="true" />
+                    <span th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}" class="help-block"></span>
+                </div>
+                
+                <div class="form-group" th:classappend="${#fields.hasErrors('lancamento')} ? has-error">
+                    <label for="lancamento" th:text="#{filme.lancamento}"></label>
+                    <input class="form-control" type="date" th:field="*{lancamento}" autofocus="true" />
+                    <span th:if="${#fields.hasErrors('lancamento')}" th:errors="*{lancamento}" class="help-block"></span>
+                </div>
+
+                <div class="form-group" th:classappend="${#fields.hasErrors('diretor')} ? has-error">
+                    <label for="titulo" th:text="#{filme.diretor}"></label>
+                    <input class="form-control" type="text" th:field="*{diretor}" autofocus="true" />
+                    <span th:if="${#fields.hasErrors('diretor')}" th:errors="*{diretor}" class="help-block"></span>
+                </div>
+
+                <div class="form-group" th:classappend="${#fields.hasErrors('elenco')} ? has-error">
+                    <label for="elenco" th:text="#{filme.elenco}"></label>
+                    <select class="form-control" th:field="*{elenco}">
+                        <option th:each="elenco : ${elencos}" th:value="${elenco.id}" th:text="${elenco.nome}"/>
+                    </select>
+                    <span th:if="${#fields.hasErrors('elenco')}" th:errors="*{elenco}" class="help-block"></span>
+                </div>
+
+                <div class="form-group" th:classappend="${#fields.hasErrors('genero')} ? has-error">
+                    <label for="elenco" th:text="#{filme.genero}"></label>
+                    <select class="form-control" th:field="*{genero}">
+                        <option th:each="genero : ${generos}" th:value="${genero.id}" th:text="${genero.nome}"/>
+                    </select>
+                    <span th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}" class="help-block"></span>
+                </div>
+
+                <div class="form-group" th:classappend="${#fields.hasErrors('idioma')} ? has-error">
+                    <label for="elenco" th:text="#{filme.idioma}"></label>
+                    <select class="form-control" th:field="*{idioma}">
+                        <option th:each="idioma: ${idiomas}" th:value="${idioma.id}" th:text="${idioma.nome}"/>
+                    </select>
+                    <span th:if="${#fields.hasErrors('idioma')}" th:errors="*{idioma}" class="help-block"></span>
+                </div>
+                
+                  <div class="form-group" th:classappend="${#fields.hasErrors('classificacao')} ? has-error">
+                    <label for="elenco" th:text="#{filme.classificacao}"></label>
+                    <select class="form-control" th:field="*{classificacao}">
+                        <option th:each="classificacao : ${classificacoes}" th:value="${classificacao.id}" th:text="${classificacao.descricao}"/>
+                    </select>
+                    <span th:if="${#fields.hasErrors('classificacao')}" th:errors="*{classificacao}" class="help-block"></span>
+                </div>
+
+                <div class="form-group">
+                    <input class="btn btn-success" type="submit" th:value="#{form.submit}" />
+                    <input class="btn btn-primary" type="reset" th:value="#{form.reset}" />
+                </div>
+
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th th:text="#{filme.id}" />
+                            <th th:text="#{filme.titulo}" />
+                            <th th:text="#{filme.lancamento}" />
+                            <th th:text="#{filme.diretor}" />
+                            <th th:text="#{filme.elenco}" />
+                            <th th:text="#{filme.genero}" />
+                            <th th:text="#{filme.idioma}" />
+                            <th th:text="#{filme.classificacao}" />
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="f : ${filmes}">
+                            <td th:text="${f.id}"></td>
+                            <td th:text="${f.titulo}"></td>
+                            <td th:text="${f.lancamento}"></td>
+                            <td th:text="${f.diretor}"></td>
+                            <td th:text="${f.elenco.nome}"></td>
+                            <td th:text="${f.genero.nome}"></td>
+                            <td th:text="${f.idioma.nome}"></td>
+                            <td th:text="${f.classificacao.descricao}"></td>
+                            <td>
+                                <a th:href="@{${'/filme'}(id=${f.id})}" class="btn btn-default btn-xs">Editar</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+            </form>
+
+            <div class="alert alert-success" th:if="${msg}">
+                <strong>Sucess!</strong> <span th:text="${msg}"></span>
+            </div>
+
+
+            <div th:replace="fragments :: paginator(${filmes}, '/filme')">
+
+            </div>
+        </div>
+
+    </body>
+</html>
